@@ -25,17 +25,17 @@ public class CharacterController : MonoBehaviour
     { 
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.aKey.wasPressedThisFrame && currentXpositionIndex > 0)
+            if ((Keyboard.current.aKey.wasPressedThisFrame || Keyboard.current.leftArrowKey.wasPressedThisFrame) && currentXpositionIndex > 0)
             {
                 currentXpositionIndex--;
                 UpdateLateralPosition();
             }
-            else if (Keyboard.current.dKey.wasPressedThisFrame && currentXpositionIndex < 2)
+            else if ((Keyboard.current.dKey.wasPressedThisFrame || Keyboard.current.rightArrowKey.wasPressedThisFrame) && currentXpositionIndex < 2)
             {
                 currentXpositionIndex++;
                 UpdateLateralPosition();
             }
-        }
+        }        
     }
 
     private void FixedUpdate()

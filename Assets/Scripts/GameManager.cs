@@ -1,12 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> Roads = new List<GameObject> ();
     [SerializeField] private Transform playerPrefab;
+    [SerializeField] Transform carSpawn;
+
+    float prevPlayerZ;
     private float roadLength = 3.198714f;
     private int count = 5;
 
@@ -25,6 +26,18 @@ public class GameManager : MonoBehaviour
         {
             CreateRoad();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //Oyuncunun z pozisyonundaki değişimi
+        float deltaZ = playerPrefab.position.z - prevPlayerZ;
+
+        // car spawner z eksenini değişim kadar arttır.
+        carSpawn.position += new Vector3(0, 0, deltaZ);
+
+        // bir sonraki kare için z pozisyonunu güncelle
+        prevPlayerZ = playerPrefab.position.z;
     }
 
     void CreateRoad()

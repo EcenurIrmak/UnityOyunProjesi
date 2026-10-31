@@ -8,13 +8,16 @@ public class CarSpawner : MonoBehaviour
 
     [SerializeField] private float minSpawnTime = 0.5f;
     [SerializeField] private float maxSpawnTime = 3f;
+
+    [SerializeField] CharacterController characterController;
+
     void Start()
     {
         StartCoroutine(SpawnCars());
     }
     IEnumerator SpawnCars()
     {
-        while (true)
+        while (characterController.isAlive)
         {
             // rastgele süre belirleme
             float randomTime = Random.Range(minSpawnTime, maxSpawnTime);

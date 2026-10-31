@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tractor-police
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b305939530d65e4281350fb8519a01b, type: 3}
+      propertyPath: m_TagString
+      value: Cars
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

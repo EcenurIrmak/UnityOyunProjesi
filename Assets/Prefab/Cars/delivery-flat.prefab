@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: delivery-flat
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 568d3c9cfc6bb4042bda3e54575c2cad, type: 3}
+      propertyPath: m_TagString
+      value: Cars
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

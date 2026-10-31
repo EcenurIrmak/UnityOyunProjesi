@@ -7,6 +7,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] float speed;
     [SerializeField] private float lateralSmoothSpeed = 10f;   //Yumuşak geçiş hızı
+    [SerializeField] private GameObject menuCanvas;
 
     private float[] xPosition = { -0.36f, 0f, 0.36f };
 
@@ -65,7 +66,9 @@ public class CharacterController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Cars"))
         {           
-            isAlive = false;            
+            isAlive = false;
+            
+            menuCanvas.SetActive(true);
         }
     }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Cars
+  - Stone
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +10,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] private float lateralSmoothSpeed = 10f;   //Yumuşak geçiş hızı
     [SerializeField] private GameObject menuCanvas;
+    [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text stoneText;
 
     private float[] xPosition = { -0.36f, 0f, 0.36f };
 
@@ -15,6 +19,9 @@ public class CharacterController : MonoBehaviour
     Vector3 targetPosition;
 
     public bool isAlive = true;
+
+    private float score;
+    private int stones;
     void Start()
     {
         targetPosition = transform.position;
@@ -24,6 +31,10 @@ public class CharacterController : MonoBehaviour
     {
         if (isAlive)
         {
+            score += Time.deltaTime;
+            scoreText.text = "Score:" + score.ToString(format: "f1");
+            stoneText.text = "Energy Stone:" + stones.ToString(format: "f1");
+
             if (Keyboard.current != null)
             {
                 if ((Keyboard.current.aKey.wasPressedThisFrame || Keyboard.current.leftArrowKey.wasPressedThisFrame) && currentXpositionIndex > 0)
@@ -69,6 +80,16 @@ public class CharacterController : MonoBehaviour
             isAlive = false;
             
             menuCanvas.SetActive(true);
+        }             
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Stone"))
+        {
+            stones += 1;
+            score += 5;
+            speed += 0.02f;
+            Destroy(other.gameObject);
         }
     }
-}
+}   

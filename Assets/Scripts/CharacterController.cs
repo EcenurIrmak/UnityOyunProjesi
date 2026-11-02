@@ -12,6 +12,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private GameObject menuCanvas;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text stoneText;
+    [SerializeField] private AudioSource effectSourses;
+    [SerializeField] AudioClip stonesClip, deathClip;
 
     private float[] xPosition = { -0.36f, 0f, 0.36f };
 
@@ -76,8 +78,13 @@ public class CharacterController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Cars"))
-        {           
+        {
+            rb.isKinematic = true;
             isAlive = false;
+            //animator.SetBool(name: "Die", true);
+            effectSourses.Stop();
+            effectSourses.clip = deathClip;
+            effectSourses.Play();
             
             menuCanvas.SetActive(true);
         }             
@@ -89,6 +96,8 @@ public class CharacterController : MonoBehaviour
             stones += 1;
             score += 5;
             speed += 0.02f;
+            
+            effectSourses.Play();
             Destroy(other.gameObject);
         }
     }

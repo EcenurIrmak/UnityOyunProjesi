@@ -96,7 +96,7 @@ public class CharacterController : MonoBehaviour
             stones += 1;
             score += 5;
             speed += 0.02f;
-            
+            effectSourses.clip = stonesClip;
             effectSourses.Play();
             Destroy(other.gameObject);
         }

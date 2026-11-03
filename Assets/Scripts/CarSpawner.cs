@@ -9,6 +9,7 @@ public class CarSpawner : MonoBehaviour
 
     [SerializeField] private float minSpawnTime = 0.5f;
     [SerializeField] private float maxSpawnTime = 3f;
+    public int stoneCount = 0;
 
 
 
@@ -51,6 +52,7 @@ public class CarSpawner : MonoBehaviour
 
             //enerji taşı üretmek            
             Instantiate(stonePrefabs[Random.Range(0, stonePrefabs.Length)], spawnPoint.position + new Vector3(0,0.1f,0) , spawnPoint.rotation);
+            stoneCount++;
         }
     }
 }

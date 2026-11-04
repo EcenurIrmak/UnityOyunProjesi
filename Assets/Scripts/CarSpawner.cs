@@ -9,6 +9,7 @@ public class CarSpawner : MonoBehaviour
 
     [SerializeField] private float minSpawnTime = 0.5f;
     [SerializeField] private float maxSpawnTime = 3f;
+    [SerializeField] GameManager gameManager;
     public int stoneCount = 0;
 
 
@@ -24,7 +25,7 @@ public class CarSpawner : MonoBehaviour
     }
     IEnumerator SpawnCars()
     {
-        while (characterController.isAlive)
+        while (characterController.isAlive && !gameManager.platformCreated)
         {
             // rastgele süre belirleme
             float randomTime = Random.Range(minSpawnTime, maxSpawnTime);
@@ -40,7 +41,7 @@ public class CarSpawner : MonoBehaviour
     }
     IEnumerator SpawnStones()
     {
-        while (characterController.isAlive)
+        while (characterController.isAlive && !gameManager.platformCreated)
         {
             // rastgele süre belirleme
             float randomTime = Random.Range(minSpawnTime, maxSpawnTime);

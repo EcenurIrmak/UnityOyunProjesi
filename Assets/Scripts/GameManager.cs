@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private float roadLength = 3.198714f;
     private int count = 5;
     CarSpawner carSpawner;
-    private bool platformCreated = false;
+    public bool platformCreated = false;
     int StoneLimit = 5;
 
     void Start()

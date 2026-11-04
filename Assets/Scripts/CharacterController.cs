@@ -27,6 +27,12 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         targetPosition = transform.position;
+
+        // Bunu ekliyoruz: Karakterin fiziksel olarak devrilmesini engeller
+        if (rb != null)
+        {
+            rb.freezeRotation = true;
+        }
     }
 
     void Update()
@@ -57,14 +63,15 @@ public class CharacterController : MonoBehaviour
     {
         if (isAlive)
         {
-            Vector3 forwardMove = Vector3.forward * speed * Time.fixedDeltaTime;   // İleri haraket kodu
+            // İleri hareket miktarını hesapla (Z ekseni)
+            float forwardMove = speed * Time.fixedDeltaTime;
 
-            // yana yumuşak geçiş yapımı
-            Vector3 currentPosition = rb.position;
-            Vector3 lateralMove = Vector3.Lerp(currentPosition, targetPosition, Time.fixedDeltaTime*lateralSmoothSpeed);
+            // Yana yumuşak geçişi sadece X ekseninde uyguluyoruz (Z eksenini bozmamak için)
+            float targetX = xPosition[currentXpositionIndex];
+            float currentX = Mathf.Lerp(rb.position.x, targetX, Time.fixedDeltaTime * lateralSmoothSpeed);
 
-            // İleri ve yanal haraketi birleştirmek
-            Vector3 combineMove = new Vector3(lateralMove.x, transform.position.y, rb.position.z) + forwardMove;
+            // İleri ve yanal hareketi birleştirip Rigidbody ile hareket ettir
+            Vector3 combineMove = new Vector3(currentX, rb.position.y, rb.position.z + forwardMove);
             rb.MovePosition(combineMove);
         }
         

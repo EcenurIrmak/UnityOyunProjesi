@@ -297,12 +297,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4543607108491888044}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.401127, y: 0.3234732, z: -6.5991516}
-  m_LocalScale: {x: 0.25, y: 0.05, z: 0.25}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.045038152, y: -0.40522325, z: -0.43482423}
+  m_LocalScale: {x: 0.01908397, y: 0.0666946, z: 0.07324933}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5852105792488111533}
+  m_Father: {fileID: 5837178292628169538}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &4594608961653166832
 MeshFilter:
@@ -416,7 +416,6 @@ Transform:
   - {fileID: 5837178292628169538}
   - {fileID: 6036984563369383467}
   - {fileID: 875036258635174124}
-  - {fileID: 6264575605477989038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6974120594716754162
@@ -431,6 +430,7 @@ GameObject:
   - component: {fileID: 6247976963902409798}
   - component: {fileID: 6156873388270096742}
   - component: {fileID: 2198673738696828343}
+  - component: {fileID: 4966056437715082132}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -447,10 +447,11 @@ Transform:
   m_GameObject: {fileID: 6974120594716754162}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05000019, y: 1.7065003, z: -6.1740184}
-  m_LocalScale: {x: 13.1, y: 3.413, z: 0.749686}
+  m_LocalPosition: {x: 0.05000019, y: 0.6557, z: -6.1740184}
+  m_LocalScale: {x: 13.1, y: 1.311616, z: 0.749686}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6264575605477989038}
   m_Father: {fileID: 5852105792488111533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6247976963902409798
@@ -531,3 +532,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4966056437715082132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6974120594716754162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd85cc1ac0eb5941ab004a16d27218d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WallController
+  targetYPosition: -0.655808
+  speed: 5

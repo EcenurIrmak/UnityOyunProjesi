@@ -34,6 +34,16 @@ Sistem Promptu ve İstek/Yanıt Akışı
 NPC karakter, oyun evrenine adapte edilmiş siber-rehber kimliğiyle promptlanır. Oyuncu 30 taşı toplayıp son platforma ayak bastığında, oyun durumu ve oyuncunun başarı verileri JSON payload formatında yerel LLM'e iletilir. Yapılandırılmış çıktı şeması sayesinde modelden gelen yanıtlar güvenle parse edilerek oyun arayüzüne yansıtılır.
 <img width="8192" height="2510" alt="Ollama NPC Dialogue Game Flow-2026-11-05-190412" src="https://github.com/user-attachments/assets/7a9fd4fa-7101-4e44-a93f-e6c7b365cede" />
 
+4. Hata Yönetimi ve Dayanıklılık Stratejisi
+Canlı sunumlar ve test demoları sırasında oyunun kararlılığını korumak ve NOT-6 kuralında belirtilen çökme risklerini sıfıra indirmek amacıyla kapsamlı hata yönetimi stratejileri entegre edilmiştir:
+
+Yerel Sunucu Erişilemezliği (Ollama Kapalı): Ollama servisinin arka planda çalışmadığı veya ağ zaman aşımı (HttpRequestException) yarattığı senaryolarda oyunun hata verip kapanması engellenmiştir. try-catch blokları ile sarılan istek fonksiyonları, hata durumunda anında önceden tanımlanmış fallback (yedek) diyalog metinlerini devreye sokar.
+
+Geçersiz veya Eksik JSON Yanıtları: LLM sunucusundan boş, bozuk veya şemaya uymayan verilerin dönme ihtimaline karşı katı null check (boş referans denetimi) mekanizmaları kurulmuştur.
+
+Bileşen Güvenliği (Null-Reference Koruması): CarSpawner, GameManager ve npcCharacter referanslarının sahnede eksik olması durumunda FindObjectOfType veya GameObject.Find yedek arama sorgularıyla nesneler güvenli bir şekilde atanır.
+
+
 
 
 

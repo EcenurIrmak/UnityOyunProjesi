@@ -43,36 +43,78 @@ Geçersiz veya Eksik JSON Yanıtları: LLM sunucusundan boş, bozuk veya şemaya
 
 Bileşen Güvenliği (Null-Reference Koruması): CarSpawner, GameManager ve npcCharacter referanslarının sahnede eksik olması durumunda FindObjectOfType veya GameObject.Find yedek arama sorgularıyla nesneler güvenli bir şekilde atanır.
 
+5. TEST SENARYOLARI VE SONUÇLAR
+Senaryo 1: Prosedürel Yol Üretimi ve Sonsuz Döngü Akış Testi (CreateRoad)Senaryonun Amacı: Oyuncu ilerledikçe GameManager üzerindeki CreateRoad metodunun tetiklenerek yol parçalarının dinamik (prosedürel) olarak sahneye hatasız eklenmesi ve bellek yönetimi doğrulaması.Girdi Verileri: Oyuncu karakterinin $Z$ eksenindeki anlık konum verisi, yol prefabrikleri ve tetikleyici (trigger) alanlar.İşlem Adımları:Oyuncu başlangıç zemininden ileriye doğru koşmaya başlar.Oyuncu yolun sonundaki sınır tetikleyicisine bastığında CreateRoad() metodu çağrılır.Yeni yol parçası bir önceki parçanın uç koordinatına eklenir (Instantiate).Arkada kalan ve oyuncunun görüş alanından çıkan eski yol parçaları bellekten temizlenir (Destroy).Beklenen Çıktı / Sonuç: Yolun takılma veya görsel kırılma olmadan sonsuz döngü mantığıyla akıcı şekilde üretilmesi ve bellek sızıntısının (memory leak) önlenmesi. (Sonuç: Başarılı)
 
-5. Uygulamaya Ait Ekran Görüntüleri, Test Senaryoları ve Sonuçlar
-Test Senaryoları ve Doğrulama
-Kaynak Sınırı Testi (stoneLimit = 30): Oyuncunun topladığı taş sayısının tam olarak 30 olduğunda yeni yol üretiminin durdurulması ve döngünün kırılması test edildi. (Sonuç: Başarılı, sayaç tam 30'da kilitlendi).
+Senaryo 2: Dinamik Araç ve Taş Spawner Mekanizması (CarSpawner & CarMover)Senaryonun Amacı: Oyuncunun hareketine paralel olarak arkadan gelen araç engellerinin ve yoldaki enerji taşlarının asenkron Coroutine yapıları ile doğru noktalarda üretilmesinin doğrulanması.Girdi Verileri: CarSpawner Coroutine döngüsü, rastgele spawn noktaları ($X, Y, Z$ koordinatları), araç hız parametreleri.İşlem Adımları:CarSpawner sınıfı başlatılır ve belirlenen saniye aralıklarında Coroutine çalışır.Oyuncunun önünde ve arkasında araçlar ve enerji taşları rastgele şeritlere spawn edilir.CarMover bileşeni aktifleşerek araçları oyuncunun hareket yönüne doğru belirli bir sabit hızla sürer.Beklenen Çıktı / Sonuç: Araçların ve taşların çakışmadan, oyuncunun ilerleyişini zorlaştıracak ancak imkansız kılmayacak dengeli aralıklarla sahneye üretilmesi. (Sonuç: Başarılı)
 
-Araba Gecikme Testi (StopCarsAfterDelay): 30. taşın toplanmasından hemen sonra trafiğin aniden kesilmesi yerine, oyuncuya nefes alacak alan tanımak adına arabaların 5 saniye daha spawn olmaya devam edip ardından güvenle durması doğrulandı. (Sonuç: Başarılı).
+Senaryo 3: Kaynak Sınırı ve Trafik Sonlandırma Testi (stoneLimit = 30 & StopCarsAfterDelay)
+Senaryonun Amacı: Oyuncunun 30 adet enerji taşını topladığında yol üretiminin durması ve trafiğin güvenli bir şekilde kesilmesinin test edilmesi.
 
-LLM Dayanıklılık Testi: Ollama kapalı simülasyonda test edilerek istisna yakalama mekanizmalarının oyun akışını kesintiye uğratmadığı kanıtlandı. (Sonuç: Başarılı, yedek diyalog devreye girdi).
+Girdi Verileri: stoneCount sayaç değişkeni, stoneLimit = 30 eşik değeri, 5 saniyelik StopCarsAfterDelay gecikme süresi.
 
-Örnek NPC Diyaloğu (Ollama Çıktısı)
+İşlem Adımları:
+
+Oyuncu yoldaki enerji taşlarını toplayarak stoneCount değerini artırır.
+
+enerji taşı toplandığı anda (stoneCount == 30) GameManager yeni yol üretimini (CreateRoad) durdurur.
+
+Trafiğin aniden kesilip oyuncuyu sarsmaması için StopCarsAfterDelay Coroutine'i tetiklenerek araç üretimi 5 saniye daha devam eder ve ardından tamamen kapatılır.
+
+Beklenen Çıktı / Sonuç: Yol üretiminin 30. taşta durması, sayaç kilitlenmesi ve 5 saniyelik tolerans süresinin sonunda araç üretiminin sorunsuz şekilde kapanması. (Sonuç: Başarılı, sayaç tam 30'da kilitlendi)
+
+Senaryo 4: Bitiş Platformu Üretimi ve NPC Doğma Mekanizması (CreatePlatform & NPCSpawnPoint)
+Senaryonun Amacı: Araç trafiği durduktan sonra son platformun eklenmesi ve NPC karakterinin belirlenen koordinatta aktifleşmesinin doğrulanması.
+
+Girdi Verileri: Son platform prefabriği, CreatePlatform() metodu çağrısı, platform üzerindeki NPCSpawnPoint Transform koordinatı.
+
+İşlem Adımları:
+
+Trafik durduktan sonra CreatePlatform() çalıştırılır ve son platform sahnenin ucuna bağlanır.
+
+Gizli durumda bekleyen NPC karakteri, platform üzerindeki NPCSpawnPoint pozisyonuna ışınlanır ve SetActive(true) yapılır.
+
+Oyuncu platforma adım attığında oyun içi kamera diyalog açısına geçer.
+
+Beklenen Çıktı / Sonuç: Platformun doğru hizada sahneye eklenmesi, NPC'nin tam doğma noktasında görünür hale gelmesi ve diyalog moduna geçilmesi. (Sonuç: Başarılı)
+
+Senaryo 5: Yerel LLM Entegrasyonu, Asenkron İstek ve Dayanıklılık Testi (Ollama HTTP / Fallback)
+Senaryonun Amacı: Ollama yerel LLM sunucusuna gönderilen asenkron HTTP POST isteğinin doğrulanması ve sunucu kapalı olduğunda çökme yaşanmadan yedek (fallback) diyalog sisteminin devreye girmesi.
+
+Girdi Verileri: http://localhost:11434/api/generate adresi, sistem promptu, oyuncunun başarı verisi (JSON formatında) ve simüle edilmiş sunucu kesintisi.
+
+İşlem Adımları:
+
+Oyuncu NPC'nin yanına vardığında C# tarafında hazırlanan JSON payload'ı yerel Ollama API'ye async/await ile gönderilir.
+
+Normal Çalışma: Modelden dönen dinamik yanıt parse edilerek sohbet paneline basılır.
+
+Hata Simülasyonu: Ollama servisi kapatılarak ağ hatası (HttpRequestException) tetiklenir. try-catch bloğu hatayı yakalar.
+
+Beklenen Çıktı / Sonuç: İstek asenkron yapıldığı için oyun kilitlenmez (FPS düşmez). Sunucu açıkken dinamik LLM yanıtı; kapalıyken önceden tanımlanmış yedek diyalog metni ekrana basılır. Oyun çökmez. (Sonuç: Başarılı, yedek diyalog başarıyla devreye girdi)
+
+Örnek NPC Diyaloğu (Ollama Çıktısı):
 NPC Karakter: "Tebrikler gezgin! 30 enerji taşını başarıyla topladın ve bu tehlikeli yolları geride bıraktın. Sınırları aştın, şimdi sistemin gerçek kapısı senin için aralanıyor..."
 
-6. Sonuç ve Tartışma
-Başarılar
+6. SONUÇ VE TARTIŞMA
+6.1. Başarılar
 Modüler OOP Mimarisi: GameManager, CarSpawner, CarMover ve CharacterController sınıfları katı nesne yönelimli ilkelere uygun olarak ayrıştırılmış, kod tekrarı önlenmiştir.
 
 Asenkron Performans Optimizasyonu: Coroutine yapıları ve FixedUpdate kullanımı sayesinde oyun içi kare hızı (FPS) kararlılığı korunmuş, arayüz donmaları engellenmiştir.
 
 Yerel Yapay Zeka Entegrasyonu: İnternet bağımlılığı olmaksızın çalışan Ollama altyapısı ile güvenli ve özgün bir diyalog deneyimi elde edilmiştir.
 
-Sınırlılıklar
-Yerel LLM yanıt süresi (inference latency), çalıştırıldığı bilgisayarın işlemci (CPU) ve grafik kartı (GPU) donanım gücüne doğrudan bağımlıdır. Düşük donanımlı test cihazlarında çıkarım sürelerinin milisaniyelik gecikmelere sebep olabileceği gözlemlenmiştir.
+6.2. Sınırlılıklar
+Yerel LLM yanıt süresi (inference latency), çalıştırıldığı bilgisayarın GPU/CPU donanım gücüne doğrudan bağımlıdır.
 
-Olası Geliştirmeler
-Gelecek aşamalarda NPC diyaloglarına duygu analizi (sentiment analysis) katmanları eklenerek oyuncunun topladığı taş sayısına veya kalan canına duyarlı farklı senaryo dallanmaları, puan bonusları veya harita içi avantajlar tetiklenebilir.
+6.3. Olası Geliştirmeler
+Gelecek aşamalarda NPC diyaloglarına duygu analizi (sentiment analysis) katmanları eklenerek oyuncunun oynayış tarzına göre farklı senaryo dallanmaları oluşturulabilir.
 
+KAYNAKÇA
 
+Unity Technologies. (2022). Unity Documentation - Procedural Generation & NavMesh. https://docs.unity3d.com
 
+Ollama. (2024). Ollama API Reference: Generate a Response. https://github.com/ollama/ollama/blob/main/docs/api.md
 
-
-
-
+Microsoft Docs. (2023). Asynchronous Programming in C# with async/await. https://learn.microsoft.com/en-us/dotnet/csharp/async
 

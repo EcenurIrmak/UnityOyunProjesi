@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] TMP_Text stoneText;
     [SerializeField] private AudioSource effectSourses;
     [SerializeField] AudioClip stonesClip, deathClip;
+    
     private bool onPlatform = false;
     private bool isMovingForward = false;
     private bool isMovingBackward = false;
@@ -22,7 +23,8 @@ public class CharacterController : MonoBehaviour
     Vector3 targetPosition;
     public bool isAlive = true;
     private float score;
-    private int stones;
+    public int stones;
+    
     void Start()
     {
         targetPosition = transform.position;
@@ -142,6 +144,6 @@ public class CharacterController : MonoBehaviour
             effectSourses.clip = stonesClip;
             effectSourses.Play();
             Destroy(other.gameObject);
-        }
+        }       
     }
 }   

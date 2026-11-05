@@ -1,74 +1,118 @@
-using System;
-using System.Collections;
-using System.Text;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.Networking;
+using System.Text;
 
 public class OllamaClient : MonoBehaviour
 {
     private string ollamaUrl = "http://localhost:11434/api/generate";
-    [SerializeField] private string modelName = "llama3"; // Bilgisayarında yüklü model adı (örn: llama3 veya phi3)
+    [SerializeField] private string modelName = "llama3";
 
-    [Serializable]
-    private class OllamaRequest
+    public IEnumerator SistemDogrulamaDiyalogUret(int kristalSayisi, string oyuncuMesaji, NPCMood ruhHali, System.Action<NpcResponseData> yanitAksiyonu)
     {
-        public string model;
-        public string prompt;
-        public bool stream;
-    }
-
-    [Serializable]
-    private class OllamaResponse
-    {
-        public string response;
-        public bool done;
-    }
-
-    public IEnumerator GenerateDialogue(int collectedGems, Action<string> onResponseReceived)
-    {
-        string prompt;
-
-        if (collectedGems >= 20)
+        string npcRuhHaliMetni = ruhHali switch
         {
-            prompt = $"Bir video oyununda kapıyı koruyan eğlenceli bir NPC'sin. Oyuncu 30 üzerinden {collectedGems} adet enerji taşı topladı (hedef en az 20 idi). Oyuncuyu tebrik eden, samimi ve kısa (en fazla 2 tümce) bir Türkçe geçiş izni mesajı yaz.";
-        }
-        else
-        {
-            prompt = $"Bir video oyununda kapıyı koruyan esprili bir NPC'sin. Oyuncu 30 üzerinden {collectedGems} adet enerji taşı topladı (hedef 20 idi, yani eksik topladı). Oyuncuya takılan, 'ah be bir tane kaçtı' tarzında esprili bir cümle kurup, ardından 'neyse bu seferlik seni geçiriyorum' diyerek kapıyı açacağını belirten kısa bir Türkçe mesaj yaz.";
-        }
-
-        OllamaRequest bodyObj = new OllamaRequest
-        {
-            model = modelName,
-            prompt = prompt,
-            stream = false
+            NPCMood.Mutlu => "Veri doğrulaması %100 başarılı! Eşik değer aşıldı. Tebrikler, KAZANDINIZ!",
+            NPCMood.Heyecanli => "Mükemmel performans! Maksimum veri senkronizasyonu sağlandı. Harika iş, KAZANDINIZ!",
+            NPCMood.Kizgin => "Kritik hata: Kristal sayısı yetersiz! Sistem gereksinimlerini karşılayamadınız. KAYBETTİNİZ!",
+            NPCMood.Uzguncu => "Üzgünüm, hesaplanan değerler hedef aralığın altında kaldı. Başarısız oldunuz, KAYBETTİNİZ!",
+            NPCMood.Alayci => "Verileriniz sınırın altında. Bu performansla onay alabileceğinizi mi sandınız? KAYBETTİNİZ!",
+            _ => "Sistem analizi tamamlandı."
         };
 
-        string jsonBody = JsonUtility.ToJson(bodyObj);
+        string sistemKomutu = "Sen bir Bilişim Sistemleri Doğrulama Terminalisin (NPC). " +
+                              "Seçenek 1 (Sistem Doğrulama ve Entegrasyon Terminali) konseptine tam bağlı kal. " +
+                              "Oyuncunun topladığı kristal sayısına (Hedef: 20 ve üzeri) ve oyuncunun yazdığı mesaja göre simülasyon sonucunu belirle. " +
+                              "NPC'nin ruh hali ve kararı şuna dayanmalıdır: " + npcRuhHaliMetni + " " +
+                              "Asla 'Benim ruh halim şöyle' gibi meta açıklamalar yapma, doğrudan profesyonel bir sistem terminali gibi konuş. " +
+                              "Yanıtını MUTLAKA sadece şu JSON formatında ver, başka hiçbir metin ekleme: " +
+                              "{\"message\": \"NPC'nin akademik terminal yanıtı ve KAZANDINIZ veya KAYBETTİNİZ kararı\", \"isWin\": true/false}";
 
-        using (UnityWebRequest request = new UnityWebRequest(ollamaUrl, "POST"))
+        string kullaniciKomutu = $"Veri Analizi: Oyuncu {kristalSayisi} kristal topladı (Hedef eşik: 20). " +
+                                 $"Oyuncunun mesajı: '{oyuncuMesaji}'. " +
+                                 $"Eğer kristalSayisi >= 20 ise isWin true olsun ve mutlu/heyecanlı bir terminal tonuyla 'KAZANDINIZ' de. " +
+                                 $"Eğer kristalSayisi < 20 ise isWin false olsun ve seçilen ruh haline göre (Kızgın/Üzgün/Alaycı) 'KAYBETTİNİZ' de. " +
+                                 $"Cevabını tamamen Türkçe, resmi, teknik ve akademik bir dille yaz.";
+
+        yield return StartCoroutine(JsonIstegiGonder(sistemKomutu, kullaniciKomutu, kristalSayisi, oyuncuMesaji, yanitAksiyonu));
+    }
+
+    private IEnumerator JsonIstegiGonder(string sistemKomutu, string kullaniciKomutu, int kristalSayisi, string oyuncuMesaji, System.Action<NpcResponseData> yanitAksiyonu)
+    {
+        string kacirilmisSistem = sistemKomutu.Replace("\"", "\\\"");
+        string kacirilmisKullanici = kullaniciKomutu.Replace("\"", "\\\"");
+
+        string jsonGövdesi = "{" +
+            "\"model\": \"" + modelName + "\"," +
+            "\"system\": \"" + kacirilmisSistem + "\"," +
+            "\"prompt\": \"" + kacirilmisKullanici + "\"," +
+            "\"stream\": false," +
+            "\"format\": \"json\"" +
+        "}";
+
+        byte[] hamGovde = Encoding.UTF8.GetBytes(jsonGövdesi);
+
+        using (UnityWebRequest webIstegi = new UnityWebRequest(ollamaUrl, "POST"))
         {
-            byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonBody);
-            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = new DownloadHandlerBuffer();
-            request.SetRequestHeader("Content-Type", "application/json");
+            webIstegi.uploadHandler = new UploadHandlerRaw(hamGovde);
+            webIstegi.downloadHandler = new DownloadHandlerBuffer();
+            webIstegi.SetRequestHeader("Content-Type", "application/json");
 
-            yield return request.SendWebRequest();
+            yield return webIstegi.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.Success)
+            if (webIstegi.result != UnityWebRequest.Result.Success)
             {
-                string jsonResponse = request.downloadHandler.text;
-                OllamaResponse res = JsonUtility.FromJson<OllamaResponse>(jsonResponse);
-                onResponseReceived?.Invoke(res.response.Trim());
+                Debug.LogError("Ollama Bağlantı Hatasi: " + webIstegi.error);
+                bool varsayilanKazandi = kristalSayisi >= 20;
+                yanitAksiyonu?.Invoke(new NpcResponseData
+                {
+                    message = varsayilanKazandi ? "Veri doğrulaması başarılı. KAZANDINIZ!" : "Yetersiz veri. KAYBETTİNİZ!",
+                    isWin = varsayilanKazandi
+                });
             }
             else
             {
-                // Ollama kapalıysa veya yanıt vermezse oyunun donmaması için yedek metin
-                string fallback = collectedGems >= 20
-                    ? "Harika iş çıkardın, yeterli taşı topladın. Geçebilirsin!"
-                    : "Hey, 20'den az taşın var ama neyse, bu seferlik seni idare ediyorum geç bakalım!";
-                onResponseReceived?.Invoke(fallback);
+                string jsonYaniti = webIstegi.downloadHandler.text;
+                NpcResponseData veri = JsonCoz(jsonYaniti, kristalSayisi);
+                yanitAksiyonu?.Invoke(veri);
             }
         }
+    }
+
+    private NpcResponseData JsonCoz(string hamJson, int kristalSayisi)
+    {
+        try
+        {
+            int yanitIndeksi = hamJson.IndexOf("\"response\":\"");
+            if (yanitIndeksi != -1)
+            {
+                int baslangic = yanitIndeksi + 12;
+                int bitis = hamJson.IndexOf("\",\"done\":");
+                if (bitis == -1) bitis = hamJson.LastIndexOf("\"");
+
+                if (bitis > baslangic)
+                {
+                    string icMetin = hamJson.Substring(baslangic, bitis - baslangic);
+                    icMetin = System.Text.RegularExpressions.Regex.Unescape(icMetin);
+
+                    NpcResponseData veri = JsonUtility.FromJson<NpcResponseData>(icMetin);
+                    if (veri != null && !string.IsNullOrEmpty(veri.message))
+                    {
+                        return veri;
+                    }
+                }
+            }
+        }
+        catch (System.Exception hata)
+        {
+            Debug.LogError("JSON Çözümleme Hatası: " + hata.Message);
+        }
+
+        bool varsayilanKazandi = kristalSayisi >= 20;
+        return new NpcResponseData
+        {
+            message = varsayilanKazandi ? "Simülasyon matrisi onaylandı. KAZANDINIZ!" : "Yetersiz parametre girişi. KAYBETTİNİZ!",
+            isWin = varsayilanKazandi
+        };
     }
 }

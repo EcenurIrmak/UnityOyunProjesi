@@ -1,64 +1,97 @@
-using System.Collections;
-using TMPro; // TextMeshPro kullanıyoruz
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using System.Collections;
+
+public enum NPCMood
+{
+    Mutlu,
+    Heyecanli,
+    Kizgin,
+    Uzguncu,
+    Alayci
+}
 
 public class NpcDialogueManager : MonoBehaviour
 {
     [Header("UI Bilesenleri")]
-    public GameObject dialoguePanel;     // Diyalog kutusu arayüzü (Panel)
-    public TextMeshProUGUI dialogueText; // NPC'nin konuşmasını yazdıracağımız yazı alanı
-    public Button continueButton;        // Oyunu bitirme/devam etme butonu
+    public GameObject diyalogPaneli;
+    public TextMeshProUGUI diyalogMetni;
+    public Button devamButonu;
+    public TMP_InputField oyuncuGirdiAlani; // Boşluksuz ve hatasız tanım
 
     [Header("Referanslar")]
-    public OllamaClient ollamaClient;
+    public OllamaClient ollamaIstemcisi;
 
-    private bool isDialogueActive = false;
+    private bool diyalogAktifMi = false;
+    private int mevcutKristalSayisi = 0;
+    private NPCMood secilenRuhHali = NPCMood.Mutlu;
+    private bool kazanmaDurumu = false;
+    private string sohbetGecmisi = "";
 
     private void Start()
     {
-        // Oyun başlar başlamaz diyalog panelini gizle
-        if (dialoguePanel != null) dialoguePanel.SetActive(false);
-        if (continueButton != null) continueButton.gameObject.SetActive(false);
+        if (diyalogPaneli != null) diyalogPaneli.SetActive(false);
+        if (devamButonu != null)
+        {
+            devamButonu.onClick.AddListener(GonderButonunaTiklandi);
+        }
     }
 
-    // Oyuncu asansörle yukarı çıkıp NPC'ye ulaştığında bu fonksiyonu dışarıdan tetikleyeceğiz
-    public void TriggerNpcEncounter(int totalCollectedGems)
+    public void NpcKarsilamasiBaslat(int toplananKristal, NPCMood ruhHali = NPCMood.Mutlu)
     {
-        if (isDialogueActive) return;
-        isDialogueActive = true;
+        if (diyalogAktifMi) return;
+        diyalogAktifMi = true;
+        mevcutKristalSayisi = toplananKristal;
+        secilenRuhHali = ruhHali;
+        sohbetGecmisi = "";
 
-        dialoguePanel.SetActive(true);
-        dialogueText.text = "NPC düşünüyor...";
-        continueButton.gameObject.SetActive(false);
+        // Panel açılıyor ve diyalog boyunca asla kapanmıyor
+        diyalogPaneli.SetActive(true);
+        diyalogMetni.text = "Güvenlik ve doğrulama terminaline ulaştınız. Veri analizi başlatıldı...";
 
-        // Ollama'dan dinamik yanıtı asenkron olarak iste
-        StartCoroutine(ollamaClient.GenerateDialogue(totalCollectedGems, (response) =>
+        if (oyuncuGirdiAlani != null)
         {
-            StartCoroutine(TypeText(response));
+            oyuncuGirdiAlani.gameObject.SetActive(true);
+            oyuncuGirdiAlani.text = "";
+        }
+
+        if (devamButonu != null)
+        {
+            devamButonu.gameObject.SetActive(true);
+        }
+
+        // İlk açılışta NPC'nin başlangıç diyalogunu yüklüyoruz
+        StartCoroutine(ollamaIstemcisi.SistemDogrulamaDiyalogUret(mevcutKristalSayisi, "Dinamik engelleri ve tuzakları aşarak hedef kristalleri topladık. Sistem analizinin tamamlanmasını bekliyoruz.", secilenRuhHali, (yanit) =>
+        {
+            kazanmaDurumu = yanit.isWin;
+            sohbetGecmisi = "<b>NPC (Terminal):</b> " + yanit.message;
+            diyalogMetni.text = sohbetGecmisi;
         }));
     }
 
-    // Yazının ekrana daktilo efektiyle harf harf akması için
-    IEnumerator TypeText(string sentence)
+    public void GonderButonunaTiklandi()
     {
-        dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
+        string oyuncuMesaji = oyuncuGirdiAlani != null ? oyuncuGirdiAlani.text : "";
+
+        if (!string.IsNullOrEmpty(oyuncuMesaji))
         {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(0.025f); // Yazılma hızı
+            // Oyuncunun mesajı geçmişe ekleniyor, panel açık kalıyor
+            sohbetGecmisi += "\n\n<b>Operator (Sen):</b> " + oyuncuMesaji;
+            diyalogMetni.text = sohbetGecmisi + "\n\n<b>NPC (Terminal):</b> Yanıt işleniyor...";
+            oyuncuGirdiAlani.text = "";
+
+            // Oyuncunun yazdığı metin Ollama'ya gidip NPC'nin seçilen ruh halindeki cevabı alınıyor
+            StartCoroutine(ollamaIstemcisi.SistemDogrulamaDiyalogUret(mevcutKristalSayisi, oyuncuMesaji, secilenRuhHali, (yanit) => {
+                kazanmaDurumu = yanit.isWin;
+
+                sohbetGecmisi += "\n\n<b>NPC (Terminal):</b> " + yanit.message;
+                diyalogMetni.text = sohbetGecmisi;
+            }));
         }
-
-        // Yazı bittikten sonra butonu göster
-        continueButton.gameObject.SetActive(true);
-    }
-
-    // Butona tıklandığında çalışacak fonksiyon
-    public void OnContinueButtonClicked()
-    {
-        dialoguePanel.SetActive(false);
-        Debug.Log("Oyun başarıyla tamamlandı!");
-        // Buraya istersen sahne değiştirme kodu ekleyebilirsin:
-        // UnityEngine.SceneManagement.SceneManager.LoadScene("AnaMenu");
+        else
+        {
+            Debug.Log("Lütfen bir mesaj girin.");
+        }
     }
 }

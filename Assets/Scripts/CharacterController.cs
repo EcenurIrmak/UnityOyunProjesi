@@ -14,14 +14,13 @@ public class CharacterController : MonoBehaviour
     [SerializeField] TMP_Text stoneText;
     [SerializeField] private AudioSource effectSourses;
     [SerializeField] AudioClip stonesClip, deathClip;
-
+    private bool onPlatform = false;
+    private bool isMovingForward = false;
+    private bool isMovingBackward = false;
     private float[] xPosition = { -0.36f, 0f, 0.36f };
-
     private int currentXpositionIndex = 1;
     Vector3 targetPosition;
-
     public bool isAlive = true;
-
     private float score;
     private int stones;
     void Start()
@@ -55,7 +54,9 @@ public class CharacterController : MonoBehaviour
                     currentXpositionIndex++;
                     UpdateLateralPosition();
                 }
-            }
+                isMovingForward = Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed;
+                isMovingBackward = Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed;
+            }                        
         }
     }
 
@@ -63,18 +64,47 @@ public class CharacterController : MonoBehaviour
     {
         if (isAlive)
         {
-            // İleri hareket miktarını hesapla (Z ekseni)
-            float forwardMove = speed * Time.fixedDeltaTime;
-
             // Yana yumuşak geçişi sadece X ekseninde uyguluyoruz (Z eksenini bozmamak için)
             float targetX = xPosition[currentXpositionIndex];
             float currentX = Mathf.Lerp(rb.position.x, targetX, Time.fixedDeltaTime * lateralSmoothSpeed);
+            float forwardMove;
+            Vector3 combineMove;
 
-            // İleri ve yanal hareketi birleştirip Rigidbody ile hareket ettir
-            Vector3 combineMove = new Vector3(currentX, rb.position.y, rb.position.z + forwardMove);
-            rb.MovePosition(combineMove);
+            if (!onPlatform)
+            {
+                // 1. Durum: Platforma gelene kadar normal ileri gider
+                forwardMove = speed * Time.fixedDeltaTime;   //ileri haraket miktarı
+                combineMove = new Vector3(currentX, rb.position.y, rb.position.z + forwardMove);
+                rb.MovePosition(combineMove);
+            }
+            else
+            {
+                // 2. Durum: Platformdayız
+                float moveDirection = 0f;
+                if (isMovingForward)
+                {
+                    moveDirection = 1f;  // İleri git (Pozitif yön)
+                }
+                else if (isMovingBackward)
+                {
+                    moveDirection = -1f; // Geri git (Negatif yön)
+                }                
+                
+                if (isMovingForward || isMovingBackward)
+                {
+                    // W veya İleri oka basıyorsak ileri git
+                    forwardMove = moveDirection * Time.fixedDeltaTime; 
+                    combineMove = new Vector3(currentX, rb.position.y, rb.position.z + forwardMove);
+                    rb.MovePosition(combineMove);
+                }
+                else
+                {
+                    // Tuşa basmıyorsak Z eksenini hiç değiştirme (Olduğu yerde kilitlensin, geri gitmesin)
+                    combineMove = new Vector3(currentX, rb.position.y, rb.position.z);
+                    rb.MovePosition(combineMove);
+                }
+            }
         }
-        
     }
 
     void UpdateLateralPosition()
@@ -85,8 +115,7 @@ public class CharacterController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Cars"))
-        {
-            rb.isKinematic = true;
+        {            
             isAlive = false;
             //animator.SetBool(name: "Die", true);
             effectSourses.Stop();
@@ -94,7 +123,14 @@ public class CharacterController : MonoBehaviour
             effectSourses.Play();
             
             menuCanvas.SetActive(true);
-        }             
+        }
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            onPlatform = true;
+            rb.isKinematic = true;           
+        }
+        //if(other.gameObject.CompareTag("Wall"))
+        //    rb.isKinematic = false;
     }
     private void OnTriggerEnter(Collider other)
     {

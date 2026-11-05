@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Cars
   - Stone
+  - Platform
+  - Button
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,7 @@ public class NpcDialogueManager : MonoBehaviour
     public GameObject diyalogPaneli;
     public TextMeshProUGUI diyalogMetni;
     public Button devamButonu;
-    public TMP_InputField oyuncuGirdiAlani; // Boşluksuz ve hatasız tanım
+    public TMP_InputField oyuncuGirdiAlani; 
 
     [Header("Referanslar")]
     public OllamaClient ollamaIstemcisi;
@@ -46,7 +46,7 @@ public class NpcDialogueManager : MonoBehaviour
         secilenRuhHali = ruhHali;
         sohbetGecmisi = "";
 
-        // Panel açılıyor ve diyalog boyunca asla kapanmıyor
+        
         diyalogPaneli.SetActive(true);
         diyalogMetni.text = "Güvenlik ve doğrulama terminaline ulaştınız. Veri analizi başlatıldı...";
 
@@ -61,7 +61,7 @@ public class NpcDialogueManager : MonoBehaviour
             devamButonu.gameObject.SetActive(true);
         }
 
-        // İlk açılışta NPC'nin başlangıç diyalogunu yüklüyoruz
+        
         StartCoroutine(ollamaIstemcisi.SistemDogrulamaDiyalogUret(mevcutKristalSayisi, "Dinamik engelleri ve tuzakları aşarak hedef kristalleri topladık. Sistem analizinin tamamlanmasını bekliyoruz.", secilenRuhHali, (yanit) =>
         {
             kazanmaDurumu = yanit.isWin;
@@ -76,7 +76,7 @@ public class NpcDialogueManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(oyuncuMesaji))
         {
-            // Oyuncunun mesajı geçmişe ekleniyor, panel açık kalıyor
+            
             sohbetGecmisi += "\n\n<b>Operator (Sen):</b> " + oyuncuMesaji;
             diyalogMetni.text = sohbetGecmisi + "\n\n<b>NPC (Terminal):</b> Yanıt işleniyor...";
             oyuncuGirdiAlani.text = "";

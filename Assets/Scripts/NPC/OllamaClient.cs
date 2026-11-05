@@ -39,13 +39,10 @@ public class OllamaClient : MonoBehaviour
 
     private IEnumerator JsonIstegiGonder(string sistemKomutu, string kullaniciKomutu, int kristalSayisi, string oyuncuMesaji, System.Action<NpcResponseData> yanitAksiyonu)
     {
-        string kacirilmisSistem = sistemKomutu.Replace("\"", "\\\"");
-        string kacirilmisKullanici = kullaniciKomutu.Replace("\"", "\\\"");
-
         string jsonGövdesi = "{" +
             "\"model\": \"" + modelName + "\"," +
-            "\"system\": \"" + kacirilmisSistem + "\"," +
-            "\"prompt\": \"" + kacirilmisKullanici + "\"," +
+            "\"system\": " + JsonUtility.ToJson(sistemKomutu) + "," +
+            "\"prompt\": " + JsonUtility.ToJson(kullaniciKomutu) + "," +
             "\"stream\": false," +
             "\"format\": \"json\"" +
         "}";
@@ -62,7 +59,7 @@ public class OllamaClient : MonoBehaviour
 
             if (webIstegi.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError("Ollama Bağlantı Hatasi: " + webIstegi.error);
+                Debug.LogError("Ollama Bağlantı Hatası: " + webIstegi.error);
                 bool varsayilanKazandi = kristalSayisi >= 20;
                 yanitAksiyonu?.Invoke(new NpcResponseData
                 {
@@ -81,38 +78,34 @@ public class OllamaClient : MonoBehaviour
 
     private NpcResponseData JsonCoz(string hamJson, int kristalSayisi)
     {
+        bool varsayilanKazandi = kristalSayisi >= 20;
         try
         {
-            int yanitIndeksi = hamJson.IndexOf("\"response\":\"");
-            if (yanitIndeksi != -1)
+            OllamaRootResponse root = JsonUtility.FromJson<OllamaRootResponse>(hamJson);
+            if (root != null && !string.IsNullOrEmpty(root.response))
             {
-                int baslangic = yanitIndeksi + 12;
-                int bitis = hamJson.IndexOf("\",\"done\":");
-                if (bitis == -1) bitis = hamJson.LastIndexOf("\"");
-
-                if (bitis > baslangic)
+                NpcResponseData veri = JsonUtility.FromJson<NpcResponseData>(root.response);
+                if (veri != null && !string.IsNullOrEmpty(veri.message))
                 {
-                    string icMetin = hamJson.Substring(baslangic, bitis - baslangic);
-                    icMetin = System.Text.RegularExpressions.Regex.Unescape(icMetin);
-
-                    NpcResponseData veri = JsonUtility.FromJson<NpcResponseData>(icMetin);
-                    if (veri != null && !string.IsNullOrEmpty(veri.message))
-                    {
-                        return veri;
-                    }
+                    return veri;
                 }
             }
         }
         catch (System.Exception hata)
         {
-            Debug.LogError("JSON Çözümleme Hatası: " + hata.Message);
+            Debug.LogWarning("JSON Çözümleme Hatası: " + hata.Message);
         }
 
-        bool varsayilanKazandi = kristalSayisi >= 20;
         return new NpcResponseData
         {
             message = varsayilanKazandi ? "Simülasyon matrisi onaylandı. KAZANDINIZ!" : "Yetersiz parametre girişi. KAYBETTİNİZ!",
             isWin = varsayilanKazandi
         };
     }
+}
+
+[System.Serializable]
+public class OllamaRootResponse
+{
+    public string response;
 }

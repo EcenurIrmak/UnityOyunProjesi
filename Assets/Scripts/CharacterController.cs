@@ -14,8 +14,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] TMP_Text stoneText;
     [SerializeField] private AudioSource effectSourses;
     [SerializeField] AudioClip stonesClip, deathClip;
-    
-    private bool onPlatform = false;
+    public bool onPlatform = false;
     private bool isMovingForward = false;
     private bool isMovingBackward = false;
     private float[] xPosition = { -0.36f, 0f, 0.36f };
@@ -74,14 +73,14 @@ public class CharacterController : MonoBehaviour
 
             if (!onPlatform)
             {
-                // 1. Durum: Platforma gelene kadar normal ileri gider
+                //  Platforma gelene kadar normal ileri gider
                 forwardMove = speed * Time.fixedDeltaTime;   //ileri haraket miktarı
                 combineMove = new Vector3(currentX, rb.position.y, rb.position.z + forwardMove);
                 rb.MovePosition(combineMove);
             }
             else
             {
-                // 2. Durum: Platformdayız
+                // Platformdayız
                 float moveDirection = 0f;
                 if (isMovingForward)
                 {
@@ -131,8 +130,8 @@ public class CharacterController : MonoBehaviour
             onPlatform = true;
             rb.isKinematic = true;           
         }
-        //if(other.gameObject.CompareTag("Wall"))
-        //    rb.isKinematic = false;
+        if(other.gameObject.CompareTag("Wall"))
+            isMovingForward = false;
     }
     private void OnTriggerEnter(Collider other)
     {

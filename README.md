@@ -44,7 +44,30 @@ Geçersiz veya Eksik JSON Yanıtları: LLM sunucusundan boş, bozuk veya şemaya
 Bileşen Güvenliği (Null-Reference Koruması): CarSpawner, GameManager ve npcCharacter referanslarının sahnede eksik olması durumunda FindObjectOfType veya GameObject.Find yedek arama sorgularıyla nesneler güvenli bir şekilde atanır.
 
 
+5. Uygulamaya Ait Ekran Görüntüleri, Test Senaryoları ve Sonuçlar
+Test Senaryoları ve Doğrulama
+Kaynak Sınırı Testi (stoneLimit = 30): Oyuncunun topladığı taş sayısının tam olarak 30 olduğunda yeni yol üretiminin durdurulması ve döngünün kırılması test edildi. (Sonuç: Başarılı, sayaç tam 30'da kilitlendi).
 
+Araba Gecikme Testi (StopCarsAfterDelay): 30. taşın toplanmasından hemen sonra trafiğin aniden kesilmesi yerine, oyuncuya nefes alacak alan tanımak adına arabaların 5 saniye daha spawn olmaya devam edip ardından güvenle durması doğrulandı. (Sonuç: Başarılı).
+
+LLM Dayanıklılık Testi: Ollama kapalı simülasyonda test edilerek istisna yakalama mekanizmalarının oyun akışını kesintiye uğratmadığı kanıtlandı. (Sonuç: Başarılı, yedek diyalog devreye girdi).
+
+Örnek NPC Diyaloğu (Ollama Çıktısı)
+NPC Karakter: "Tebrikler gezgin! 30 enerji taşını başarıyla topladın ve bu tehlikeli yolları geride bıraktın. Sınırları aştın, şimdi sistemin gerçek kapısı senin için aralanıyor..."
+
+6. Sonuç ve Tartışma
+Başarılar
+Modüler OOP Mimarisi: GameManager, CarSpawner, CarMover ve CharacterController sınıfları katı nesne yönelimli ilkelere uygun olarak ayrıştırılmış, kod tekrarı önlenmiştir.
+
+Asenkron Performans Optimizasyonu: Coroutine yapıları ve FixedUpdate kullanımı sayesinde oyun içi kare hızı (FPS) kararlılığı korunmuş, arayüz donmaları engellenmiştir.
+
+Yerel Yapay Zeka Entegrasyonu: İnternet bağımlılığı olmaksızın çalışan Ollama altyapısı ile güvenli ve özgün bir diyalog deneyimi elde edilmiştir.
+
+Sınırlılıklar
+Yerel LLM yanıt süresi (inference latency), çalıştırıldığı bilgisayarın işlemci (CPU) ve grafik kartı (GPU) donanım gücüne doğrudan bağımlıdır. Düşük donanımlı test cihazlarında çıkarım sürelerinin milisaniyelik gecikmelere sebep olabileceği gözlemlenmiştir.
+
+Olası Geliştirmeler
+Gelecek aşamalarda NPC diyaloglarına duygu analizi (sentiment analysis) katmanları eklenerek oyuncunun topladığı taş sayısına veya kalan canına duyarlı farklı senaryo dallanmaları, puan bonusları veya harita içi avantajlar tetiklenebilir.
 
 
 

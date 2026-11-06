@@ -12,8 +12,6 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] GameManager gameManager;
 
     public int stoneCount = 0;
-
-    // Taş limiti burada da 30 olarak güncellendi
     
     private bool stopCarSpawning = false;
 

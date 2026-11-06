@@ -1,120 +1,187 @@
-AI-Powered 3D Runner & Yerel LLM Destekli Etkileşimli Oyun Projesi
-Proje Adı: AI-Powered 3D Runner & Local LLM NPC Companion
+YazLab I - Proje 1: Otonom AI ve Yerel LLM Entegreli 3D Oyun Raporu
 
-Ekip Üyeleri:
+**Proje Adı:** `YazLabProje1` - Otonom Companion ve Yerel LLM Gatekeeper Entegrasyonu  
+**Tarih:** Kasım 2026  
+**Ders:** Yazılım Geliştirme Laboratuvarı - I  
+**Kurum:** Kocaeli Üniversitesi - Teknoloji Fakültesi, Bilişim Sistemleri Mühendisliği  
 
-Marjana Ruzyyeva (231307001)
+---
 
-Ecenur Irmak (241307089)
+##  1. Giriş ve Proje Tanımı
 
-Tarih:5.11.2026
+### 1.1. Problemin Tanımı ve Amaç
+Geleneksel oyun mimarilerinde NPC (*Non-Player Character*) diyalogları ve yoldaş (*companion*) davranışları genellikle kural tabanlı (*scripted/hardcoded*) yapılara dayanmaktadır. Bu durum, oyuncu deneyimini sınırlandırmakta ve dinamik yanıt üretme kapasitesini engellemektedir.
 
-Üniversite / Bölüm: Kocaeli Üniversitesi, Teknoloji Fakültesi, Bilişim Sistemleri Mühendisliği
+Bu projenin temel amacı, **Unity** oyun motoru üzerinde **Otonom Yapay Zekâ Kahramanı (Companion)** ile **Yerel Büyük Dil Modeli (Local LLM - Ollama)** entegrasyonuna sahip bir NPC'yi tek bir macera oyunu senaryosunda birleştirmektir.
 
-1. Giriş: Problemin Tanımı, Amaç ve Genel Oyun Senaryosu
-Problemin Tanımı
-Geleneksel 3D sonsuz koşu (runner) türündeki video oyunları, genellikle tekdüze ilerleyen mekanikler, statik harita tasarımları ve önceden kodlanmış (hardcoded) tek tip NPC diyalogları üzerine kuruludur. Bu durum, oyuncuların oyun dünyasıyla kurduğu etkileşimi kısa sürede sığlaştırmakta ve tekrara düşen, öngörülebilir bir deneyim yaratmaktadır. Oyuncunun oyun içerisindeki başarıları, topladığı kaynaklar veya gösterdiği performans ile oyunun sonlandığı nokta arasındaki bağ genellikle kısıtlıdır. Ayrıca yapay zeka entegrasyonu barındırmayan geleneksel projelerde NPC karakterler yalnızca pasif birer görsel unsur veya sabit metin taşıyıcısı olarak kalmakta, oyuncuya dinamik, akıcı ve bağlamsal geri bildirimler sunamamaktadır.
+---
 
-Amaç
-Bu projenin temel amacı; nesne yönelimli programlama (OOP) prensiplerine tam bağlı, modüler, genişletilebilir ve sürdürülebilir bir Unity 3D mimarisi kurarak proaktif bir oyun döngüsü tasarlamaktır. Proje kapsamında, prosedürel olarak üretilen yollar üzerinde ilerleyen bir karakterin dinamik engellerle ve hareketli araçlarla mücadelesi, belirli bir kaynak toplama hedefi (30 adet enerji taşı) ile sınırlandırılmıştır. Hedefe ulaşıldığında oyun alanı evrilmekte ve tamamen yerel makinede koşan bir Büyük Dil Modeli (LLM - Ollama) altyapısıyla entegre edilen akıllı bir NPC, oyuncunun performansına özel dinamik, tekrara düşmeyen diyaloglar üretmektedir. Böylece klasik arcade mekanikleri ile modern üretken yapay zeka (Generative AI) teknolojileri hibrit bir yapıda başarılı bir şekilde buluşturulmaktadır.
+### 1.2. Minimum Oyun Senaryosu Akışı
 
-Genel Oyun Senaryosu
-Oyuncu, başlangıçta sonsuz döngü mantığıyla dinamik olarak üretilen yollar (CreateRoad) üzerinde ilerler. Arkadan gelen ve rastgele spawn noktalarından türeyen araç engellerine (CarSpawner ve CarMover) karşı dikkatli olmak zorundadır. Bu kaçış ve ilerleyiş sırasında yola yerleştirilen enerji taşlarını toplayarak stoneCount değerini artırır. Taş sayısı tam olarak 30 adede ulaştığında (stoneLimit = 30), sistem otomatik olarak yeni yol üretimini durdurur; araba üretimi ani 
-bir kesinti yaratmamak ve oynanış akışını bozmamak adına asenkron bir gecikmeyle (StopCarsAfterDelay) 5 saniye daha devam edip güvenle sonlandırılır. Bu sürecin sonunda son platform (CreatePlatform) sahneye dahil olur ve bu platformun üzerindeki NPCSpawnPoint koordinatlarında gizlenen NPC karakter aktifleşir. Aktifleşen NPC, yerel LLM üzerinden oyuncuyu karşılayarak oyun içi eylemlerine dayalı özelleştirilmiş, akıcı ve anlamlı bir diyalog oturumu başlatır.
+1. **Sonsuz Koşu ve Veri Toplama Aşaması:**  
+   Oyuncu, 3 kulvarlı (*lane-shifting*) yolda engellerden (arabalar) kaçarak enerji taşlarını (*Energy Stones*) toplar. Bu sırada Companion ajanı, fiziksel çakışmaları önlemek adına `Rigidbody` tabanlı eşzamanlı hareket ile oyuncuyu takip eder.
 
-2. Otonom AI ve Karar Mekanizması
-Oyunun otonom akışı ve spawner mekanizmaları, GameManager ve CarSpawner sınıfları arasındaki asenkron coroutine yapıları ile anlık Update/FixedUpdate döngüleri üzerinden yönetilir. Oyuncunun hareketine göre carSpawn pozisyonu dinamik olarak güncellenirken, taş sınırının denetlenmesi oyunun evre geçişlerini belirler. Aşağıdaki Mermaid akış diyagramı sistemin karar ve durum mekanizmasını ayrıntılı olarak ortaya koymaktadır:
+2. **Fiziksel Engel (Platform) Aşaması:**  
+   Taş limiti (30 adet) tamamlandığında sonsuz yol spawner'ı durur ve final platformu oluşturulur. Oyuncu platforma adım attığı an `onPlatform` tetiklenir. Companion ajanı bağımsız bir `NavMeshAgent` bileşenine dönüşerek platform üzerindeki şalter/düğme (`ButtonTarget`) noktasına otonom olarak rotalanır. Şaltere basıldığında `WallController` üzerinden engel duvarı aşağı indirilir.
 
-<img width="1947" height="8045" alt="Ollama NPC Dialogue Game Flow-2026-11-05-183228" src="https://github.com/user-attachments/assets/c1bca5da-bbe4-423c-979e-9a8e8aa80b98" />
+3. **Sosyal / Mantıksal Engel (Yerel LLM NPC) Aşaması:**  
+   Engel kaldırıldıktan sonra oyuncu **Bilişim Sistemleri Doğrulama Terminali (NPC)** ile etkileşime girer. Oyuncunun topladığı taş sayısı ve yazdığı mesaj, yerel Ollama sunucusuna (`http://localhost:11434`) asenkron HTTP isteği olarak gönderilir. LLM'in döndürdüğü yapılandırılmış JSON verisine göre oyun **"KAZANDINIZ"** veya **"KAYBETTİNİZ"** durumu ile sonlanır.
 
-3. LLM Entegrasyonu Mimarisi
-Sistem, dışa bağımlı bulut servisleri yerine tamamen yerel bilgisayar kaynaklarını kullanan Ollama yerel sunucusuna (http://localhost:11434/api/generate) C# UnityWebRequest / HttpClient yapıları aracılığıyla asenkron HTTP POST istekleri göndererek çalıştırılmaktadır.
+---
 
-Sistem Promptu ve İstek/Yanıt Akışı
-NPC karakter, oyun evrenine adapte edilmiş siber-rehber kimliğiyle promptlanır. Oyuncu 30 taşı toplayıp son platforma ayak bastığında, oyun durumu ve oyuncunun başarı verileri JSON payload formatında yerel LLM'e iletilir. Yapılandırılmış çıktı şeması sayesinde modelden gelen yanıtlar güvenle parse edilerek oyun arayüzüne yansıtılır.
-<img width="8192" height="2510" alt="Ollama NPC Dialogue Game Flow-2026-11-05-190412" src="https://github.com/user-attachments/assets/7a9fd4fa-7101-4e44-a93f-e6c7b365cede" />
+## 📸 Oyun İçi Ekran Görüntüleri
 
-4. Hata Yönetimi ve Dayanıklılık Stratejisi
-Canlı sunumlar ve test demoları sırasında oyunun kararlılığını korumak ve NOT-6 kuralında belirtilen çökme risklerini sıfıra indirmek amacıyla kapsamlı hata yönetimi stratejileri entegre edilmiştir:
+<p align="center">
+  <img width="300" alt="Ekran görüntüsü 1" src="https://github.com/user-attachments/assets/411fc325-ace0-4f87-a7fb-d17f608b31bc" />
+  <img width="300" alt="Ekran görüntüsü 2" src="https://github.com/user-attachments/assets/5b9c8ada-938a-4ac3-84ea-69c79604a7ee" />
+  <img width="300" alt="Ekran görüntüsü 3" src="https://github.com/user-attachments/assets/6367abae-e47b-4d28-b628-86aeb1d61ffa" />
+  <img width="300" alt="Ekran görüntüsü 4" src="https://github.com/user-attachments/assets/aaf5e8ca-0248-42c3-8a57-55c32bf82010" />
+  <img width="300" alt="Ekran görüntüsü 5" src="https://github.com/user-attachments/assets/d062dd12-17c1-4c00-9396-944de07af73e" />
+  <img width="300" alt="Ekran görüntüsü 6" src="https://github.com/user-attachments/assets/5b2e0f78-01b8-4579-ac58-ba02b01deb46" />
+   <img width="300" alt="Ekran görüntüsü 7" src="https://github.com/user-attachments/assets/70311267-21b4-463e-b944-84b549184ac9" />
+</p>
+---
 
-Yerel Sunucu Erişilemezliği (Ollama Kapalı): Ollama servisinin arka planda çalışmadığı veya ağ zaman aşımı (HttpRequestException) yarattığı senaryolarda oyunun hata verip kapanması engellenmiştir. try-catch blokları ile sarılan istek fonksiyonları, hata durumunda anında önceden tanımlanmış fallback (yedek) diyalog metinlerini devreye sokar.
+##  2. Otonom AI Kahraman (Companion) Mimarisi
 
-Geçersiz veya Eksik JSON Yanıtları: LLM sunucusundan boş, bozuk veya şemaya uymayan verilerin dönme ihtimaline karşı katı null check (boş referans denetimi) mekanizmaları kurulmuştur.
+Companion bileşeni, iki farklı fazda çalışacak şekilde hibrit bir mimariyle tasarlanmıştır:
 
-Bileşen Güvenliği (Null-Reference Koruması): CarSpawner, GameManager ve npcCharacter referanslarının sahnede eksik olması durumunda FindObjectOfType veya GameObject.Find yedek arama sorgularıyla nesneler güvenli bir şekilde atanır.
+* **Faz 1 (Sürekli Takip):** `onPlatform == false` durumunda `NavMeshAgent` devre dışı bırakılır, fiziki titremeyi önlemek için `transform.position` üzerinden bağıntılı Z-eksen eşitlemesi yapılır.
+* **Faz 2 (Otonom Yol Bulma):** `onPlatform == true` durumunda `NavMesh.SamplePosition` ile ajan güvenli koordinata yerleştirilir ve `ButtonTarget` noktasına NavMesh rotalaması başlatılır.
 
-5. TEST SENARYOLARI VE SONUÇLAR
-Senaryo 1: Prosedürel Yol Üretimi ve Sonsuz Döngü Akış Testi (CreateRoad)Senaryonun Amacı: Oyuncu ilerledikçe GameManager üzerindeki CreateRoad metodunun tetiklenerek yol parçalarının dinamik (prosedürel) olarak sahneye hatasız eklenmesi ve bellek yönetimi doğrulaması.Girdi Verileri: Oyuncu karakterinin $Z$ eksenindeki anlık konum verisi, yol prefabrikleri ve tetikleyici (trigger) alanlar.İşlem Adımları:Oyuncu başlangıç zemininden ileriye doğru koşmaya başlar.Oyuncu yolun sonundaki sınır tetikleyicisine bastığında CreateRoad() metodu çağrılır.Yeni yol parçası bir önceki parçanın uç koordinatına eklenir (Instantiate).Arkada kalan ve oyuncunun görüş alanından çıkan eski yol parçaları bellekten temizlenir (Destroy).Beklenen Çıktı / Sonuç: Yolun takılma veya görsel kırılma olmadan sonsuz döngü mantığıyla akıcı şekilde üretilmesi ve bellek sızıntısının (memory leak) önlenmesi. (Sonuç: Başarılı)
+### 2.1. Companion Karar ve Davranış Akış Diyagramı
 
-Senaryo 2: Dinamik Araç ve Taş Spawner Mekanizması (CarSpawner & CarMover)Senaryonun Amacı: Oyuncunun hareketine paralel olarak arkadan gelen araç engellerinin ve yoldaki enerji taşlarının asenkron Coroutine yapıları ile doğru noktalarda üretilmesinin doğrulanması.Girdi Verileri: CarSpawner Coroutine döngüsü, rastgele spawn noktaları ($X, Y, Z$ koordinatları), araç hız parametreleri.İşlem Adımları:CarSpawner sınıfı başlatılır ve belirlenen saniye aralıklarında Coroutine çalışır.Oyuncunun önünde ve arkasında araçlar ve enerji taşları rastgele şeritlere spawn edilir.CarMover bileşeni aktifleşerek araçları oyuncunun hareket yönüne doğru belirli bir sabit hızla sürer.Beklenen Çıktı / Sonuç: Araçların ve taşların çakışmadan, oyuncunun ilerleyişini zorlaştıracak ancak imkansız kılmayacak dengeli aralıklarla sahneye üretilmesi. (Sonuç: Başarılı)
+<p align="center">
+  <img width="800" alt="Companion Akış Diyagramı" src="https://github.com/user-attachments/assets/bf93380e-69a7-487b-ac04-aed7e10030b9" />
+</p>
 
-Senaryo 3: Kaynak Sınırı ve Trafik Sonlandırma Testi (stoneLimit = 30 & StopCarsAfterDelay)
-Senaryonun Amacı: Oyuncunun 30 adet enerji taşını topladığında yol üretiminin durması ve trafiğin güvenli bir şekilde kesilmesinin test edilmesi.
+### 2.2. Otonom Yol Bulma Test ve Performans Metrikleri
 
-Girdi Verileri: stoneCount sayaç değişkeni, stoneLimit = 30 eşik değeri, 5 saniyelik StopCarsAfterDelay gecikme süresi.
+`NavMeshAgent` bileşeninin farklı başlangıç koordinatlarında ve engel konfigürasyonlarında gösterdiği otonom performans test edilmiş ve aşağıdaki metrikler elde edilmiştir:
 
-İşlem Adımları:
+| Test Senaryosu | Başlangıç Mesafesi | Ortalama Ulaşma Süresi (sn) | Hedefe Ulaşma Başarısı (%) |
+| :--- | :---: | :---: | :---: |
+| **Senaryo A** (Doğrudan Hat) | 10 Metre | 1.82 | %100 |
+| **Senaryo B** (Açılı Yaklaşım) | 15 Metre | 2.45 | %100 |
+| **Senaryo C** (Dinamik Engel Sonrası) | 12 Metre | 2.10 | %100 |
 
-Oyuncu yoldaki enerji taşlarını toplayarak stoneCount değerini artırır.
+---
 
-enerji taşı toplandığı anda (stoneCount == 30) GameManager yeni yol üretimini (CreateRoad) durdurur.
+## 3. Yerel LLM Entegrasyonu ve Diyalog Mimarisi
 
-Trafiğin aniden kesilip oyuncuyu sarsmaması için StopCarsAfterDelay Coroutine'i tetiklenerek araç üretimi 5 saniye daha devam eder ve ardından tamamen kapatılır.
+LLM entegrasyonu, istemci tarafındaki oyun döngüsünü dondurmamak için C# `IEnumerator` ve `UnityWebRequest` yapıları kullanılarak tamamen **asenkron (non-blocking)** olarak geliştirilmiştir.
 
-Beklenen Çıktı / Sonuç: Yol üretiminin 30. taşta durması, sayaç kilitlenmesi ve 5 saniyelik tolerans süresinin sonunda araç üretiminin sorunsuz şekilde kapanması. (Sonuç: Başarılı, sayaç tam 30'da kilitlendi)
+### 3.1. Sistem Promptu ve Prompt Mühendisliği
 
-Senaryo 4: Bitiş Platformu Üretimi ve NPC Doğma Mekanizması (CreatePlatform & NPCSpawnPoint)
-Senaryonun Amacı: Araç trafiği durduktan sonra son platformun eklenmesi ve NPC karakterinin belirlenen koordinatta aktifleşmesinin doğrulanması.
+Ollama `llama3` modeline gönderilen Sistem ve Kullanıcı prompt yapıları aşağıda belirtilmiştir:
 
-Girdi Verileri: Son platform prefabriği, CreatePlatform() metodu çağrısı, platform üzerindeki NPCSpawnPoint Transform koordinatı.
+#### System Prompt:
+```text
+Sen bir Bilişim Sistemleri Doğrulama Terminalisin (NPC). 
+Seçenek 1 (Sistem Doğrulama ve Entegrasyon Terminali) konseptine tam bağlı kal. 
+Oyuncunun topladığı enerji taşı sayısına (Hedef: 20 ve üzeri) ve oyuncunun yazdığı mesaja göre simülasyon sonucunu belirle. 
+NPC'nin ruh hali ve kararı şuna dayanmalıdır: [Ruh Hali Metni] 
+Asla 'Benim ruh halim şöyle' gibi meta açıklamalar yapma, doğrudan profesyonel bir sistem terminali gibi konuş. 
+Yanıtını MUTLAKA sadece şu JSON formatında ver, başka hiçbir metin ekleme: 
+{"message": "NPC'nin akademik terminal yanıtı ve KAZANDINIZ veya KAYBETTİNİZ kararı", "isWin": true/false}
+```
 
-İşlem Adımları:
+#### User Prompt (Dinamik Veri Entegrasyonu):
+```text
+Veri Analizi: Oyuncu {guncelKristalSayisi} enerji taşı topladı (Hedef eşik: 20). 
+Oyuncunun mesajı: '{oyuncuMesaji}'. 
+Eğer kristalSayisi >= 20 ise isWin true olsun ve mutlu/heyecanlı bir terminal tonuyla 'KAZANDINIZ' de. 
+Eğer kristalSayisi < 20 ise isWin false olsun ve seçilen ruh haline göre (Kızgın/Üzgün/Alaycı) 'KAYBETTİNİZ' de. 
+Cevabını tamamen Türkçe, resmi, teknik ve akademik bir dille yaz.
+```
 
-Trafik durduktan sonra CreatePlatform() çalıştırılır ve son platform sahnenin ucuna bağlanır.
+### 3.2. Yapılandırılmış Çıktı Şeması (JSON Schema)
 
-Gizli durumda bekleyen NPC karakteri, platform üzerindeki NPCSpawnPoint pozisyonuna ışınlanır ve SetActive(true) yapılır.
+LLM çıktısının oyun durumu motoruna (*Game State Engine*) aktarılması için aşağıdaki Veri Transfer Objesi (DTO) kullanılmıştır:
 
-Oyuncu platforma adım attığında oyun içi kamera diyalog açısına geçer.
+```csharp
+[System.Serializable]
+public class NpcResponseData
+{
+    public string message; // NPC Terminal çıktısı
+    public bool isWin;      // Oyun kazanç/kayıp durumu
+}
+```
 
-Beklenen Çıktı / Sonuç: Platformun doğru hizada sahneye eklenmesi, NPC'nin tam doğma noktasında görünür hale gelmesi ve diyalog moduna geçilmesi. (Sonuç: Başarılı)
+### 3.3. LLM İstek ve Yanıt Akış Şeması (Sequence Diagram)
 
-Senaryo 5: Yerel LLM Entegrasyonu, Asenkron İstek ve Dayanıklılık Testi (Ollama HTTP / Fallback)
-Senaryonun Amacı: Ollama yerel LLM sunucusuna gönderilen asenkron HTTP POST isteğinin doğrulanması ve sunucu kapalı olduğunda çökme yaşanmadan yedek (fallback) diyalog sisteminin devreye girmesi.
+<p align="center">
+  <img width="800" alt="LLM Sequence Diagram" src="https://github.com/user-attachments/assets/4391e492-591a-4905-b5ec-97f3d06e3807" />
+</p>
 
-Girdi Verileri: http://localhost:11434/api/generate adresi, sistem promptu, oyuncunun başarı verisi (JSON formatında) ve simüle edilmiş sunucu kesintisi.
+### 3.4. LLM Senaryo Testleri ve Model Tepkileri
 
-İşlem Adımları:
+Farklı diyalog ve kristal girdi şartlarında yapılan 5 örnek test senaryosu aşağıdaki gibidir:
 
-Oyuncu NPC'nin yanına vardığında C# tarafında hazırlanan JSON payload'ı yerel Ollama API'ye async/await ile gönderilir.
+| Senaryo No | Kristal Sayısı | Oyuncu Girdisi | Beklenen / Üretilen NPC Yanıtı | `isWin` Çıktısı |
+| :---: | :---: | :--- | :--- | :---: |
+| **1** *(Başarılı/İkna)* | 24 | *"Tüm doğrulamaları tamamladım, kapıyı açın."* | *"Veri doğrulaması %100 başarılı! Eşik değer (24/20) aşıldı. Doğrulama onaylandı. KAZANDINIZ!"* | `true` |
+| **2** *(Yetersiz Veri)* | 12 | *"Sistemi hemen aktif et!"* | *"Kritik Hata: Kristal sayısı (12/20) yetersiz! Sistem entegrasyonu sağlanamadı. KAYBETTİNİZ!"* | `false` |
+| **3** *(Alakasız Girdi)* | 22 | *"Bugün hava çok güzel."* | *"Girdi parametreleri akademisellikten uzak ancak veri eşiği (22/20) sağlandı. KAZANDINIZ!"* | `true` |
+| **4** *(Alaycı/Ters)* | 8 | *"Beni içeri almak zorundasın."* | *"Verileriniz sınırın çok altında. Bu yetersiz parametrelerle onay alabileceğinizi mi sandınız? KAYBETTİNİZ!"* | `false` |
+| **5** *(Sınır Değer)* | 20 | *"Tam olarak istenen limiti getirdim."* | *"Maksimum veri senkronizasyonu sağlandı. Eşik değer kıl payı geçildi. KAZANDINIZ!"* | `true` |
 
-Normal Çalışma: Modelden dönen dinamik yanıt parse edilerek sohbet paneline basılır.
+---
 
-Hata Simülasyonu: Ollama servisi kapatılarak ağ hatası (HttpRequestException) tetiklenir. try-catch bloğu hatayı yakalar.
+## 4. Hata Yönetimi ve Dayanıklılık (Fault Tolerance)
 
-Beklenen Çıktı / Sonuç: İstek asenkron yapıldığı için oyun kilitlenmez (FPS düşmez). Sunucu açıkken dinamik LLM yanıtı; kapalıyken önceden tanımlanmış yedek diyalog metni ekrana basılır. Oyun çökmez. (Sonuç: Başarılı, yedek diyalog başarıyla devreye girdi)
+Sistemin kararlılığını korumak ve sunucu kaynaklı çökmeleri (*crash*) engellemek adına `OllamaClient.cs` içerisinde katmanlı hata yönetim mekanizması kurgulanmıştır:
 
-Örnek NPC Diyaloğu (Ollama Çıktısı):
-NPC Karakter: "Tebrikler gezgin! 30 enerji taşını başarıyla topladın ve bu tehlikeli yolları geride bıraktın. Sınırları aştın, şimdi sistemin gerçek kapısı senin için aralanıyor..."
+1. **Sunucu Erişilemezliği / Port Kapalı Olma Durumu:**  
+   `webIstegi.result != UnityWebRequest.Result.Success` kontrolü ile ağ veya HTTP hataları yakalanır. Sunucu yanıt vermediğinde oyun çökmez; yedek mantık (*Fallback Mechanism*) devreye girerek oyuncunun `collectedStones >= 20` durumunu kontrol eder ve yerel bir açıklama metni ile oyunu güvenli şekilde sonlandırır.
+2. **Bozuk JSON / Format Hataları:**  
+   LLM'in cevabı markdown blokları (```json ... ```) içerirse regex/string temizleme adımlarıyla JSON ayıklanır. Çözümleme başarısız olursa `catch (System.Exception hata)` bloğu çalışarak uygulamanın kilitlenmesini önler.
+3. **Asenkron Bloklamasız Akış:**  
+   Tüm ağ operasyonları Unity Coroutine'leri (`StartCoroutine`) üzerinden yürütüldüğü için ana kare hızı (FPS) düşmez, kullanıcı arayüzü donmaz.
 
-6. SONUÇ VE TARTIŞMA
-6.1. Başarılar
-Modüler OOP Mimarisi: GameManager, CarSpawner, CarMover ve CharacterController sınıfları katı nesne yönelimli ilkelere uygun olarak ayrıştırılmış, kod tekrarı önlenmiştir.
+---
 
-Asenkron Performans Optimizasyonu: Coroutine yapıları ve FixedUpdate kullanımı sayesinde oyun içi kare hızı (FPS) kararlılığı korunmuş, arayüz donmaları engellenmiştir.
+## 5. Yazılım Mimarisi ve OOP Prensipleri
 
-Yerel Yapay Zeka Entegrasyonu: İnternet bağımlılığı olmaksızın çalışan Ollama altyapısı ile güvenli ve özgün bir diyalog deneyimi elde edilmiştir.
+Proje kod yapısı, **Nesne Yönelimli Programlama (OOP)** ilkelerine uygun şekilde modüler sınıflara ayrılmıştır:
 
-6.2. Sınırlılıklar
-Yerel LLM yanıt süresi (inference latency), çalıştırıldığı bilgisayarın GPU/CPU donanım gücüne doğrudan bağımlıdır.
+* **Single Responsibility Principle (SRP):**
+  * `CarMover`: Yalnızca araç hareketinden sorumludur.
+  * `CarSpawner`: Yalnızca yol üzerindeki engellerin ve taşların zamanlamalı üretimini yönetir.
+  * `CharacterController`: Oyuncu girdilerini (`UnityEngine.InputSystem`), skor hesabını ve fiziksel durumları işler.
+  * `CompanionController`: Otonom ajanın takip ve NavMesh düğme aktivasyon mantığını yürütür.
+  * `WallController`: Fiziksel engelin hareketini yönetir.
+  * `OllamaClient`: Yerel LLM HTTP isteklerini, payload serileştirmeyi ve fallback mantığını yönetir.
+* **Encapsulation (Kapsülleme):**  
+  Değişkenler `[SerializeField] private` erişim belirteçleri ile korunmuş, dış erişimler kontrollü property ve metotlar üzerinden sağlanmıştır.
 
-6.3. Olası Geliştirmeler
-Gelecek aşamalarda NPC diyaloglarına duygu analizi (sentiment analysis) katmanları eklenerek oyuncunun oynayış tarzına göre farklı senaryo dallanmaları oluşturulabilir.
+---
 
-KAYNAKÇA
+## 6. Sonuç ve Gelecek Geliştirmeler
 
-Unity Technologies. (2022). Unity Documentation - Procedural Generation & NavMesh. https://docs.unity3d.com
+### 6.1. Başarılar
+* NavMesh tabanlı otonom kahramanın fiziksel engelleri aşması ve oyuncu ile senkronize çalışması hatasız biçimde gerçekleştirilmiştir.
+* Ollama üzerinden çalışan yerel LLM entegrasyonu, yapılandırılmış JSON çıktısı üretecek şekilde oyun durumuna bağlanmıştır.
+* Sunucu çevrimdışı olsa dahi oyunun çökmesini engelleyen hata yönetim mimarisi başarıyla entegre edilmiştir.
 
-Ollama. (2024). Ollama API Reference: Generate a Response. https://github.com/ollama/ollama/blob/main/docs/api.md
+### 6.2. Sınırlılıklar ve Gelecek Çalışmalar
+* **RL Entegrasyonu:** Companion davranışı için NavMesh kullanılmıştır; ileriki aşamalarda Unity ML-Agents kullanılarak **Pekiştirmeli Öğrenme (RL)** ile eğitim süreçleri eklenebilir.
 
-Microsoft Docs. (2023). Asynchronous Programming in C# with async/await. https://learn.microsoft.com/en-us/dotnet/csharp/async
+---
+
+## Kaynakça
+
+* Unity Technologies. (2022). *Unity Documentation - Procedural Generation & NavMesh*. [https://docs.unity3d.com](https://docs.unity3d.com)
+* Ollama. (2024). *Ollama API Reference: Generate a Response*. [https://github.com/ollama/ollama/blob/main/docs/api.md](https://github.com/ollama/ollama/blob/main/docs/api.md)
+* Microsoft Docs. (2023). *Asynchronous Programming in C# with async/await*. [https://learn.microsoft.com/en-us/dotnet/csharp/async](https://learn.microsoft.com/en-us/dotnet/csharp/async)
+
+* Karakterler ve Animasyonlar * [https://www.mixamo.com/#/]
+
+* Şehir Kiti * [https://kenney.nl/assets/city-kit-industrial]
+
+* Araba Kiti * [https://kenney.nl/assets/car-kit]
+
+* Enerji Taşları * [https://assetstore.unity.com/packages/3d/props/rolling-balls-sci-fi-pack-free-297168]
+
+* [https://www.youtube.com/playlist?list=PLN2Ayvfp8KHodNrxy-3GsrI7pn1GgttIZ]
 

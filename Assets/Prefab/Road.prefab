@@ -1055,6 +1055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1062,6 +1066,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2990753769790135297}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5599610355959203832}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &561127372926314832 stripped
 Transform:
@@ -1094,6 +1101,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &5599610355959203832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901378481193300970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: c76f9086ee1cc84409438b090ef046af, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &220561729770401244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1146,6 +1185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1153,6 +1196,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 963394696100950164}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 933352814969659131}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &325717971643124279 stripped
 Transform:
@@ -1185,6 +1231,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &933352814969659131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139127480113664141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: ec05af0a722f8c448a12b62d5ea7288f, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &582838613215548635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1237,6 +1315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1244,6 +1326,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6029028171070541737}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5697452293021085143}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &348960185375861130 stripped
 GameObject:
@@ -1271,6 +1356,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &5697452293021085143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348960185375861130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: b79acc9c6fd94a9469abb41d79688dd0, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &1124793643671319344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -1328,6 +1445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1335,6 +1456,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5592777758127833440}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3927677788927153713}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &311357812340301250 stripped
 GameObject:
@@ -1362,6 +1486,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &3927677788927153713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311357812340301250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 0cb4a9d19342eff4a8a9cb126031ce9c, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &1088176673287194488 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -1419,6 +1575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1426,6 +1586,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6114999367735133764}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1615003500075509280}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &194098187498739201 stripped
 GameObject:
@@ -1453,6 +1616,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &1615003500075509280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194098187498739201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 55ea795f5a70ac24b8c4c0c792a43c2a, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &718961760536136891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -1510,6 +1705,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1517,6 +1716,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4092974080135035407}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2007637674104715498}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &1500734674125925372 stripped
 GameObject:
@@ -1544,6 +1746,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &2007637674104715498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500734674125925372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: b3d783d78116d7c42a5a65a6da9c8cca, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &2276708771727372614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -1601,6 +1835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1608,6 +1846,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8028298571712419574}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 349825689147829305}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &1163903156930950540 stripped
 GameObject:
@@ -1635,6 +1876,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &349825689147829305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163903156930950540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 4cde575f81277054098e7467dbc35095, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &1976186804690448182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -1692,6 +1965,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1699,6 +1976,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3808745836578032291}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4921862647761310682}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &2729715141110403790 stripped
 Transform:
@@ -1731,6 +2011,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &4921862647761310682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362559281421633652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 4de3f53803ef3db45bb2f319588501c2, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &3388740621639750930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1783,11 +2095,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: building-h
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aa0b320e16b6c1a468e7a8a016eb30a2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa0b320e16b6c1a468e7a8a016eb30a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8211975171541529267}
   m_SourcePrefab: {fileID: 100100000, guid: aa0b320e16b6c1a468e7a8a016eb30a2, type: 3}
+--- !u!1 &2577836304331647043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: aa0b320e16b6c1a468e7a8a016eb30a2, type: 3}
+  m_PrefabInstance: {fileID: 3388740621639750930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8211975171541529267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2577836304331647043}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3217261, y: 0.733541, z: 1.3100004}
+  m_Center: {x: 0.58093125, y: 0.3667705, z: 0.27900004}
 --- !u!4 &2922133404381836025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: aa0b320e16b6c1a468e7a8a016eb30a2, type: 3}
@@ -1845,6 +2190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1852,6 +2201,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1816735719238483790}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2795070670335599223}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &3846662237244637246 stripped
 Transform:
@@ -1884,6 +2236,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &2795070670335599223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479329282699565700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 37ac89dd6e854b54783c4bc6af0756d6, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &3965874686618608172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1936,6 +2320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1943,6 +2331,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1600084520922307207}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2873674898831116723}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &3495681160323843527 stripped
 Transform:
@@ -1975,6 +2366,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &2873674898831116723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4307965525089099645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: d02a5e80c813e8547b7c8ca9fea29cdc, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &4298059649079010525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2027,6 +2450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2034,6 +2461,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7356163741684649277}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3245009640722878192}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &3991508320522754444 stripped
 GameObject:
@@ -2061,6 +2491,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &3245009640722878192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3991508320522754444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: ee9250e941a896c44903eb350f371c24, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &4336824638256841526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -2130,16 +2592,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: building-a
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9cd2121ec9e9cc47baf8d81befba848, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d9cd2121ec9e9cc47baf8d81befba848, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7836610635361993494}
   m_SourcePrefab: {fileID: 100100000, guid: d9cd2121ec9e9cc47baf8d81befba848, type: 3}
 --- !u!4 &5186271371530323190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d9cd2121ec9e9cc47baf8d81befba848, type: 3}
   m_PrefabInstance: {fileID: 4644318599692591901}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5526628096782343756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d9cd2121ec9e9cc47baf8d81befba848, type: 3}
+  m_PrefabInstance: {fileID: 4644318599692591901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7836610635361993494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5526628096782343756}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0835886, y: 1.4699999, z: 1.2420003}
+  m_Center: {x: -0.0007275941, y: 0.73499995, z: 0.00000014901161}
 --- !u!1001 &5168717258085694316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2192,6 +2687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2199,6 +2698,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6559767356725352083}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3983050712970350930}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &4625268884413193351 stripped
 Transform:
@@ -2231,6 +2733,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &3983050712970350930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5439100575774787133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: c8fcbcca41f3d7743aeccbe53cb55251, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &5258593062428684729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2283,6 +2817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2290,6 +2828,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1262761763754903222}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3211650885624464338}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &4916575467108568296 stripped
 GameObject:
@@ -2317,6 +2858,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &3211650885624464338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916575467108568296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: a3cb6738579b3db4a857659e23d2a539, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &5724356575843866194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -2374,11 +2947,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: building-s
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 476b6ed0186b1964f86deb45f2484924, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 476b6ed0186b1964f86deb45f2484924, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6172165246490000728}
   m_SourcePrefab: {fileID: 100100000, guid: 476b6ed0186b1964f86deb45f2484924, type: 3}
+--- !u!1 &4986200548435804024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 476b6ed0186b1964f86deb45f2484924, type: 3}
+  m_PrefabInstance: {fileID: 5328852557669499433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6172165246490000728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986200548435804024}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1200006, y: 0.83679104, z: 0.9162756}
+  m_Center: {x: 0.009999993, y: 0.41839552, z: 0}
 --- !u!4 &5654650139247109570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 476b6ed0186b1964f86deb45f2484924, type: 3}
@@ -2448,11 +3054,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: chimney-large
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f073346a762fd24c995ae1247f9b122, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f073346a762fd24c995ae1247f9b122, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3944843154442545280}
   m_SourcePrefab: {fileID: 100100000, guid: 6f073346a762fd24c995ae1247f9b122, type: 3}
+--- !u!1 &5096710021359661806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f073346a762fd24c995ae1247f9b122, type: 3}
+  m_PrefabInstance: {fileID: 5366688849766240191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3944843154442545280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096710021359661806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0799999, y: 1.6999999, z: 1.0799999}
+  m_Center: {x: 0, y: 0.84999996, z: 0}
 --- !u!4 &5616259688994744404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f073346a762fd24c995ae1247f9b122, type: 3}
@@ -2510,6 +3149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2517,6 +3160,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5568179890427644373}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7063820292183378994}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &5151493899792308021 stripped
 GameObject:
@@ -2544,6 +3190,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &7063820292183378994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151493899792308021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 45381672237f928439b005a7998711ed, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &5491604029694152079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -2601,6 +3279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2608,6 +3290,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2842805819417095822}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7275011642874425595}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &4684740591973524905 stripped
 GameObject:
@@ -2635,6 +3320,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &7275011642874425595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684740591973524905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: cfa11f91fdaba704a81f2e61104e9292, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &5352627199006424851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -2692,6 +3409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2699,6 +3420,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3869121562707037830}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4979783847067394873}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &5848061325333474014 stripped
 Transform:
@@ -2731,6 +3455,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &4979783847067394873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513239040656142436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: a1cd3b3fbf23d004e8645e6e2d7326e6, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &6338814853613446696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2783,6 +3539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2790,6 +3550,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 110196866993340671}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8896692840016327868}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &5799871039024660931 stripped
 Transform:
@@ -2822,6 +3585,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &8896692840016327868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572607109242051449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 07eb9281ebf339b4a8b0f311dbdbe8ad, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &7024076084768724282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2874,6 +3669,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2881,6 +3680,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1510474227466129589}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7713332870619548451}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &7417497334164599505 stripped
 Transform:
@@ -2913,6 +3715,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &7713332870619548451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907175435068893291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: e3a1fafcdebc65b45bddc4622d9f59bb, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &7803800140723889704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2965,6 +3799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2972,6 +3810,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 938136373913154095}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3347323834675083973}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &6957431611657853817 stripped
 GameObject:
@@ -2999,6 +3840,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &3347323834675083973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957431611657853817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 9d921c36cff90e44d853ab7d23f929e5, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &7765916171592843715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -3056,6 +3929,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3063,6 +3940,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3406664514905251830}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5986048749646194829}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &8616703138004153715 stripped
 Transform:
@@ -3095,6 +3975,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &5986048749646194829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8998048523333889993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 474b842bbb7d88d4d90687b162e66004, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &8215124145401764344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3147,6 +4059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3154,6 +4070,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2046100651015170622}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1211385192416745694}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!4 &8469936774982237715 stripped
 Transform:
@@ -3186,6 +4105,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &1211385192416745694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133460794672227497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 9e7b60075622cad46add28d91e2d9c94, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &8704108089579058471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3238,6 +4189,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3245,6 +4200,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6383836500398287532}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8393020494128774988}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &8361598879283251318 stripped
 GameObject:
@@ -3272,6 +4230,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &8393020494128774988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8361598879283251318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 9b264ef4dca64604e94520fb18e574fd, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &9169765680626258636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -3329,6 +4319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3336,6 +4330,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5286511684369964884}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6998629534770131504}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &8197020177598367328 stripped
 GameObject:
@@ -3363,6 +4360,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &6998629534770131504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197020177598367328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: d62eb6af090d83a48b795fd08ea46486, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &8830005016221031642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
@@ -3420,6 +4449,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: driveway-long (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3427,6 +4460,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4769493457724839452}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6577143735542911770}
   m_SourcePrefab: {fileID: 100100000, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}
 --- !u!1 &8168110211840237362 stripped
 GameObject:
@@ -3454,6 +4490,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35999998, y: 0.01, z: 0.39999998}
   m_Center: {x: 0, y: 0.005, z: 0}
+--- !u!114 &6577143735542911770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168110211840237362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 1f1c589e12567d541b3926e1d0e191b2, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &8795851518684824968 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 954cc52994b44e547a343cbc120be4fe, type: 3}

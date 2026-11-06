@@ -28,6 +28,20 @@ Bu projenin temel amacı, **Unity** oyun motoru üzerinde **Otonom Yapay Zekâ K
    Engel kaldırıldıktan sonra oyuncu **Bilişim Sistemleri Doğrulama Terminali (NPC)** ile etkileşime girer. Oyuncunun topladığı taş sayısı ve yazdığı mesaj, yerel Ollama sunucusuna (`http://localhost:11434`) asenkron HTTP isteği olarak gönderilir. LLM'in döndürdüğü yapılandırılmış JSON verisine göre oyun **"KAZANDINIZ"** veya **"KAYBETTİNİZ"** durumu ile sonlanır.
 
 ---
+---
+
+## 📸 Oyun İçi Ekran Görüntüleri
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121301.png" width="260" alt="Ekran Görüntüsü 1" />
+  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121319.png" width="260" alt="Ekran Görüntüsü 2" />
+  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121339.png" width="260" alt="Ekran Görüntüsü 3" />
+  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121353.png" width="260" alt="Ekran Görüntüsü 4" />
+  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121408.png" width="260" alt="Ekran Görüntüsü 5" />
+  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121428.png" width="260" alt="Ekran Görüntüsü 6" />
+  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121507.png" width="260" alt="Terminal LLM Ekranı" />
+</p>
+---
 
 ##  2. Otonom AI Kahraman (Companion) Mimarisi
 

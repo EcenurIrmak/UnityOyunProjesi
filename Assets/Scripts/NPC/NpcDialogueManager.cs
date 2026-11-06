@@ -18,13 +18,12 @@ public class NpcDialogueManager : MonoBehaviour
     public GameObject diyalogPaneli;
     public TextMeshProUGUI diyalogMetni;
     public Button devamButonu;
-    public TMP_InputField oyuncuGirdiAlani; 
+    public TMP_InputField oyuncuGirdiAlani;
 
     [Header("Referanslar")]
     public OllamaClient ollamaIstemcisi;
 
     private bool diyalogAktifMi = false;
-    private int mevcutKristalSayisi = 0;
     private NPCMood secilenRuhHali = NPCMood.Mutlu;
     private bool kazanmaDurumu = false;
     private string sohbetGecmisi = "";
@@ -42,11 +41,9 @@ public class NpcDialogueManager : MonoBehaviour
     {
         if (diyalogAktifMi) return;
         diyalogAktifMi = true;
-        mevcutKristalSayisi = toplananKristal;
         secilenRuhHali = ruhHali;
         sohbetGecmisi = "";
 
-        
         diyalogPaneli.SetActive(true);
         diyalogMetni.text = "Güvenlik ve doğrulama terminaline ulaştınız. Veri analizi başlatıldı...";
 
@@ -61,8 +58,7 @@ public class NpcDialogueManager : MonoBehaviour
             devamButonu.gameObject.SetActive(true);
         }
 
-        
-        StartCoroutine(ollamaIstemcisi.SistemDogrulamaDiyalogUret(mevcutKristalSayisi, "Dinamik engelleri ve tuzakları aşarak hedef kristalleri topladık. Sistem analizinin tamamlanmasını bekliyoruz.", secilenRuhHali, (yanit) =>
+        StartCoroutine(ollamaIstemcisi.SistemDogrulamaDiyalogUret("Dinamik engelleri ve tuzakları aşarak hedef kristalleri topladık. Sistem analizinin tamamlanmasını bekliyoruz.", secilenRuhHali, (yanit) =>
         {
             kazanmaDurumu = yanit.isWin;
             sohbetGecmisi = "<b>NPC (Terminal):</b> " + yanit.message;
@@ -72,21 +68,40 @@ public class NpcDialogueManager : MonoBehaviour
 
     public void GonderButonunaTiklandi()
     {
+        // 1. OllamaClient atanmış mı kontrol et
+        if (ollamaIstemcisi == null)
+        {
+            Debug.LogError("NpcDialogueManager: 'ollamaIstemcisi' Inspector üzerinde atanmamış!");
+            return;
+        }
+
         string oyuncuMesaji = oyuncuGirdiAlani != null ? oyuncuGirdiAlani.text : "";
 
         if (!string.IsNullOrEmpty(oyuncuMesaji))
         {
-            
             sohbetGecmisi += "\n\n<b>Operator (Sen):</b> " + oyuncuMesaji;
-            diyalogMetni.text = sohbetGecmisi + "\n\n<b>NPC (Terminal):</b> Yanıt işleniyor...";
-            oyuncuGirdiAlani.text = "";
 
-            // Oyuncunun yazdığı metin Ollama'ya gidip NPC'nin seçilen ruh halindeki cevabı alınıyor
-            StartCoroutine(ollamaIstemcisi.SistemDogrulamaDiyalogUret(mevcutKristalSayisi, oyuncuMesaji, secilenRuhHali, (yanit) => {
+            // 2. diyalogMetni null kontrolü
+            if (diyalogMetni != null)
+            {
+                diyalogMetni.text = sohbetGecmisi + "\n\n<b>NPC (Terminal):</b> Yanıt işleniyor...";
+            }
+
+            if (oyuncuGirdiAlani != null)
+            {
+                oyuncuGirdiAlani.text = "";
+            }
+
+            // Coroutine başlatma 
+            StartCoroutine(ollamaIstemcisi.SistemDogrulamaDiyalogUret(oyuncuMesaji, secilenRuhHali, (yanit) =>
+            {
                 kazanmaDurumu = yanit.isWin;
-
                 sohbetGecmisi += "\n\n<b>NPC (Terminal):</b> " + yanit.message;
-                diyalogMetni.text = sohbetGecmisi;
+
+                if (diyalogMetni != null)
+                {
+                    diyalogMetni.text = sohbetGecmisi;
+                }
             }));
         }
         else

@@ -7,9 +7,10 @@ TagManager:
   - Cars
   - Stone
   - Platform
-  - Button
   - Wall
   - NPC
+  - ButtonTarget
+  - InteractionTrigger
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ public class CarSpawner : MonoBehaviour
     public int stoneCount = 0;
 
     // Taş limiti burada da 30 olarak güncellendi
-    private int stoneLimit = 30;
+    
     private bool stopCarSpawning = false;
 
     [SerializeField] CharacterController characterController;
@@ -41,31 +41,22 @@ public class CarSpawner : MonoBehaviour
 
     IEnumerator SpawnStones()
     {
-        while (characterController.isAlive && stoneCount < stoneLimit)
+        while (characterController.isAlive && stoneCount < gameManager.StoneLimit)
         {
             float randomTime = Random.Range(minSpawnTime, maxSpawnTime);
-            yield return new WaitForSeconds(randomTime);
-
-            if (stoneCount >= stoneLimit) break;
+            yield return new WaitForSeconds(randomTime);           
 
             int randomIndex = Random.Range(0, spawnPoints.Length);
             Transform spawnPoint = spawnPoints[randomIndex];
-
-            Instantiate(stonePrefabs[Random.Range(0, stonePrefabs.Length)], spawnPoint.position + new Vector3(0, 0.1f, 0), spawnPoint.rotation);
             stoneCount++;
+            Instantiate(stonePrefabs[Random.Range(0, stonePrefabs.Length)], spawnPoint.position + new Vector3(0, 0.1f, 0), spawnPoint.rotation);
 
-            // 30. taş üretildiği an araba üretiminin 5 saniye sonra durması için geri sayım başlatılıyor
-            if (stoneCount >= stoneLimit)
+            if (stoneCount >= gameManager.StoneLimit)
             {
-                StartCoroutine(StopCarsAfterDelay(5f));
+                stopCarSpawning = true;
+                break;
             }
+                
         }
-    }
-
-    // Arabaların 5 saniye daha üretilip sonra durmasını sağlayan fonksiyon
-    IEnumerator StopCarsAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        stopCarSpawning = true;
     }
 }

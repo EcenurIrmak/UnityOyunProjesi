@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] TMP_Text stoneText;
     [SerializeField] private AudioSource effectSourses;
     [SerializeField] AudioClip stonesClip, deathClip;
+    [SerializeField] GameObject dialogPanel;
     public bool onPlatform = false;
     private bool isMovingForward = false;
     private bool isMovingBackward = false;
@@ -22,7 +23,7 @@ public class CharacterController : MonoBehaviour
     Vector3 targetPosition;
     public bool isAlive = true;
     private float score;
-    public int stones;
+    public int collectedStones;
     
     void Start()
     {
@@ -41,7 +42,7 @@ public class CharacterController : MonoBehaviour
         {
             score += Time.deltaTime;
             scoreText.text = "Score:" + score.ToString(format: "f1");
-            stoneText.text = "Energy Stone:" + stones.ToString(format: "f1");
+            stoneText.text = "Energy Stone:" + collectedStones.ToString();
 
             if (Keyboard.current != null)
             {
@@ -137,12 +138,16 @@ public class CharacterController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Stone"))
         {
-            stones += 1;
+            collectedStones += 1;
             score += 5;
             speed += 0.02f;
             effectSourses.clip = stonesClip;
             effectSourses.Play();
             Destroy(other.gameObject);
-        }       
+        }
+        if (other.gameObject.CompareTag("InteractionTrigger"))
+        {
+            dialogPanel.SetActive(true);
+        }
     }
 }   

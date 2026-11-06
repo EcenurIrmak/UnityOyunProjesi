@@ -23,7 +23,7 @@ public class NPCInteraction : MonoBehaviour
 
             // Oyuncunun üzerindeki CharacterController'dan gerçek taş/kristal sayısını alıyoruz
             CharacterController oyuncu = other.GetComponent<CharacterController>();
-            int oyuncuTaslari = oyuncu != null ? oyuncu.stones : 0;
+            int oyuncuTaslari = oyuncu != null ? oyuncu.collectedStones : 0;
 
             if (diyalogYoneticisi != null)
             {

@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool platformCreated = false;
 
     // Taş limiti 30 olarak güncellendi
-    int StoneLimit = 30;
+    public int StoneLimit = 30;
 
     void Start()
     {

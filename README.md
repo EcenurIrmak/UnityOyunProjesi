@@ -1,4 +1,4 @@
-<img width="1447" height="811" alt="Ekran görüntüsü 2026-11-06 121353" src="https://github.com/user-attachments/assets/cef34615-ba21-44d3-93e0-1de06257ec17" /># YazLab I - Proje 1: Otonom AI ve Yerel LLM Entegreli 3D Oyun Raporu
+YazLab I - Proje 1: Otonom AI ve Yerel LLM Entegreli 3D Oyun Raporu
 
 **Proje Adı:** `YazLabProje1` - Otonom Companion ve Yerel LLM Gatekeeper Entegrasyonu  
 **Tarih:** Kasım 2026  

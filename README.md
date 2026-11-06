@@ -1,4 +1,4 @@
-# YazLab I - Proje 1: Otonom AI ve Yerel LLM Entegreli 3D Oyun Raporu
+<img width="1447" height="811" alt="Ekran görüntüsü 2026-11-06 121353" src="https://github.com/user-attachments/assets/cef34615-ba21-44d3-93e0-1de06257ec17" /># YazLab I - Proje 1: Otonom AI ve Yerel LLM Entegreli 3D Oyun Raporu
 
 **Proje Adı:** `YazLabProje1` - Otonom Companion ve Yerel LLM Gatekeeper Entegrasyonu  
 **Tarih:** Kasım 2026  
@@ -33,13 +33,15 @@ Bu projenin temel amacı, **Unity** oyun motoru üzerinde **Otonom Yapay Zekâ K
 ## 📸 Oyun İçi Ekran Görüntüleri
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121301.png" width="260" alt="Ekran Görüntüsü 1" />
-  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121319.png" width="260" alt="Ekran Görüntüsü 2" />
-  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121339.png" width="260" alt="Ekran Görüntüsü 3" />
-  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121353.png" width="260" alt="Ekran Görüntüsü 4" />
-  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121408.png" width="260" alt="Ekran Görüntüsü 5" />
-  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121428.png" width="260" alt="Ekran Görüntüsü 6" />
-  <img src="https://raw.githubusercontent.com/EcenurIrmak/UnityOyunProjesi/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/Ekran%20g%C3%B6r%C3%BCnt%C3%üsü%202026-11-06%20121507.png" width="260" alt="Terminal LLM Ekranı" />
+  <img width="300" alt="Ekran görüntüsü 1" src="https://github.com/user-attachments/assets/411fc325-ace0-4f87-a7fb-d17f608b31bc" />
+  <img width="300" alt="Ekran görüntüsü 2" src="https://github.com/user-attachments/assets/5b9c8ada-938a-4ac3-84ea-69c79604a7ee" />
+  <img width="300" alt="Ekran görüntüsü 3" src="https://github.com/user-attachments/assets/6367abae-e47b-4d28-b628-86aeb1d61ffa" />
+   <br>
+  <img width="300" alt="Ekran görüntüsü 4" src="https://github.com/user-attachments/assets/aaf5e8ca-0248-42c3-8a57-55c32bf82010" />
+  <img width="300" alt="Ekran görüntüsü 5" src="https://github.com/user-attachments/assets/d062dd12-17c1-4c00-9396-944de07af73e" />
+  <img width="300" alt="Ekran görüntüsü 6" src="https://github.com/user-attachments/assets/5b2e0f78-01b8-4579-ac58-ba02b01deb46" />
+  <br>
+   <img width="300" alt="Ekran görüntüsü 7" src="https://github.com/user-attachments/assets/70311267-21b4-463e-b944-84b549184ac9" />
 </p>
 ---
 
